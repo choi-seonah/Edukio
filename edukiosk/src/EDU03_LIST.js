@@ -1,4 +1,4 @@
-const bussList=[
+const busList=[
     {id:1, start:"Seoul", dest:"Busan", date:"250410", time:"09:00"},
     {id:2, start:"Seoul", dest:"Busan", date:"250411", time:"13:30"},
     {id:3, start:"Seoul", dest:"Busan", date:"250411", time:"16:00"},
@@ -21,5 +21,5 @@ const bussList=[
     {id:20, start:"Ulsan", dest:"Daejeon", date:"250411", time:"20:20"},
     {id:21, start:"Ulsan", dest:"Seoul", date:"250410", time:"18:10"}
 ];
-
-export default bussList;
+// price 관계없이 20000원 고정
+export default busList;
