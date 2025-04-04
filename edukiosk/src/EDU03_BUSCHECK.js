@@ -12,7 +12,7 @@ export default function BusCheck() {
         <>
             <form onSubmit={(e) => {
                 e.preventDefault();
-                navigate("/busselect/busdes/buscheck/busseat");  //다음 좌석 선택창으로 이동 /buscheck추가
+                navigate("/busselect/busdes/buscheck/busseat");
             }}>
                 <h2>선택하신 버스 정보</h2>
                 {buses.length > 0 ? (
@@ -25,13 +25,16 @@ export default function BusCheck() {
                                 {<span>출발 날짜:{bus.date}</span>} | {<span>출발시간:{bus.time}</span>}
                             </p>
                         ))}
+                        <button type="submit">좌석 선택창 이동</button>
+                        <p>원하시는 버스시간대를 골라주세요</p>
+                        <p>버스를 고르신후 다음 진행을 원하시면 하단 버튼을 눌러주세요.</p>
                     </div>
                 ) : (
-                    <p>검색된 버스가 없습니다.</p>
-                )}
+                    <p>검색된 버스가 없습니다. <br/>(홈으로 버튼을 눌러주세요)</p>
 
-                <button type="submit">좌석 선택창 이동</button>
+                )}
             </form>
+
 
 
         </>
