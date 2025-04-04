@@ -1,5 +1,5 @@
-import bussList from "./EDU03_LIST";
-import { useNavigate } from "react-router-dom";
+import busList from "./EDU03_LIST";
+import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 
 export default function DesForm(){
@@ -9,6 +9,29 @@ export default function DesForm(){
     const [date, setdate]=useState("");
     const [starttime, setstarttime]=useState("");
     const [arrivetime, setarrivetime]=useState("");
+
+    const Searchbus = () => {
+        const parseTime = (timeStr) => {
+            const [hours, minutes] = timeStr.split(":").map(Number);
+            return new Date(0, 0, 0, hours, minutes); // 시간 비교를 위해 Date 객체로 변환
+        };
+    
+        const searchbuses = busList.filter(bus => {
+            const busTime = parseTime(bus.time);
+            const inputStartTime = parseTime(starttime);
+            const inputArriveTime = parseTime(arrivetime);
+    
+            return (
+                bus.start === start &&
+                bus.des === des &&
+                bus.date === date && // 날짜 비교
+                busTime >= inputStartTime && // 출발 시간이 선택한 시간 이후
+                busTime <= inputArriveTime   // 출발 시간이 선택한 시간 이전
+            );
+        });
+        console.log("검색된 버스:", searchbuses);
+        busnavigate("/buscheck", { state: { buses: searchbuses } });
+    };
 
     return(
         <>
@@ -54,8 +77,7 @@ export default function DesForm(){
                     <input type="time" value={arrivetime} onChange={(e)=>setarrivetime(e.target.value)}></input>
                 </div><br/>
             </form>
-                <button onClick={(e)=>{busnavigate("/buscheck");
-                }}>검색</button>
+                <button onClick={(e)=>{Searchbus()}}>검색</button>
 
         </div>
         </>
