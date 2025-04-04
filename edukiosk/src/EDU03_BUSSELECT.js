@@ -1,17 +1,18 @@
 import { useNavigate } from "react-router-dom";
+import "./css/EDU03_BUSSELECT.css";
 
 export default function BusSelect(){
     const navigate = useNavigate();
     return(
-        <>    
-        <div onClick={(e)=>{
-            navigate("/busselect/busdes");  // 경로명만 설정해주기
-        }}>현장 예매</div>
+        <>
+        <h1>예매 방식을 선택해주세요</h1>
+        <img src="./media/kioskicon.png" onClick={(e)=>{
+            navigate("/busselect/busdes");
+        }}></img>   
 
-
-        <div onClick={(e)=>{
-            navigate("/busselect/businput"); // 경로명 바꿀생각
-        }}>온라인예약</div>
+        <img src="./media/ticketicon.png" onClick={(e)=>{
+            navigate("/busselect/businput");
+        }}></img>
 
         </>
     );
