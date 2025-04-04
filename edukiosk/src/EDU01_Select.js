@@ -7,7 +7,7 @@ export default function Select() {
         <h1>EDUKIO</h1>
         <h1>키오스크 연습</h1>
         <ul>
-            <li><Link to='/menu'>피자 주문 연습하기</Link></li>
+            <li><Link to='/way'>피자 주문 연습하기</Link></li>
             <li><Link to='/busselect'>버스 티켓 예매 연습하기</Link></li>
         </ul>
     </div>
