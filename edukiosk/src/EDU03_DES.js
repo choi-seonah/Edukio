@@ -8,8 +8,8 @@ import Buscheck from "./EDU03_BUSCHECK";
 function Des(){
     return(
             <Routes>
-                <Route path="/busdes" element={<DesForm/>}></Route>
-                <Route path="/buscheck" element={<Buscheck/>}></Route>
+                <Route path="/busselect/busdes" element={<DesForm/>}></Route>
+                <Route path="/busselect/busdes/buscheck" element={<Buscheck/>}></Route>
             </Routes>
     );
 }
