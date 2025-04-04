@@ -19,6 +19,8 @@ function App() {
         <Route path="/busselect/busdes/buscheck" element={<BusCheck />}></Route>
         <Route path="/busselect/busdes/buscheck/busseat" element={<Seat />}></Route>
         <Route path="/busselect/busdes/buscheck/busseat/buspay" element={<BusPay />}></Route>
+        
+        
       </Route>
     </Routes>
   );
