@@ -11,6 +11,7 @@ const busSlice = createSlice({
     reducers:{
         busPrice:(state, action)=>{
             // const busResult = //20000 * 좌석선택값
+        
         }
     }
 }); 

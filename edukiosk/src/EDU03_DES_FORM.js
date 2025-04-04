@@ -30,7 +30,7 @@ export default function DesForm(){
             );
         });
         console.log("검색된 버스:", searchbuses);
-        busnavigate("/buscheck", { state: { buses: searchbuses } });
+        busnavigate("/busselect/busdes/buscheck", { state: { buses: searchbuses } });
     };
 
     return(
@@ -70,10 +70,9 @@ export default function DesForm(){
                 </div><br/>
 
                 <div id="bustime">
-                    <span>출발시간 </span>
+                    <p>버스 시간 조회</p>
                     <input type="time" value={starttime} onChange={(e)=>setstarttime(e.target.value)}></input>
                     <span> ~ </span>
-                    <span>도착시간 </span>
                     <input type="time" value={arrivetime} onChange={(e)=>setarrivetime(e.target.value)}></input>
                 </div><br/>
             </form>
