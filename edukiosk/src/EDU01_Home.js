@@ -1,12 +1,11 @@
 import { useNavigate } from "react-router-dom";
 
-
 export default function Home() {
-    const navigatehome=useNavigate();
+    const navigate = useNavigate();
     return (
         <div>
             <button onClick={(e)=>{
-                navigatehome("/")
+                navigate('/');
             }}>홈으로</button>
         </div>
     );
