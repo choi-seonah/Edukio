@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import busSlice from "./EDU03_BUS_SLICE";
+import PizzaSlice from "./EDU02_PIZZA_SLICE";
+
 const store = configureStore({
-    reducer:{
-        useBus:busSlice.reducer
+    reducer: {
+        pizza: PizzaSlice.reducer
     }
 })
 
