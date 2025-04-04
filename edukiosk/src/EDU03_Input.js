@@ -5,7 +5,7 @@ import { findTicket } from './EDU03_BUS_SLICE';
 import busList from "./EDU03_LIST";
 export default function BookingInput() {
   const [bookingNumber, setBookingNumber] = useState("");
-  // const dispatch = useDispatch();
+  // const dispatch = useDispatch(); 빈주석들 지우기
   const navigate = useNavigate();
   
 
@@ -17,9 +17,9 @@ export default function BookingInput() {
         const bookingTicket = e.target.text.value;
         const searchId = busList.find((bus)=> bus.id === bookingTicket)
         if(searchId){
-          navigate("/busselect");
+          navigate("/busselect"); //경로명 바꾸기
         }else{
-          alert("없음");
+          alert("없음"); //멘트 바꾸기
         }
       }}>
         <h2>예매티켓찾기</h2>
