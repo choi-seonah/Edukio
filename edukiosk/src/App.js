@@ -6,12 +6,14 @@ import Seat from "./EDU03_Seat";
 import Select from "./EDU01_Select";
 import BusPay from "./EDU03_PAY";
 import MainLayout from "./MainLayout";
+import Menu from "./EDU02_Menu";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Select />}></Route>
+        <Route path="/menu" element={<Menu/>}></Route>
         <Route path="/busselect" element={<BusSelect />}></Route>
         <Route path="/busselect/busdes" element={<DesForm />}></Route>
         <Route path="/busselect/busdes/buscheck" element={<BusCheck />}></Route>
