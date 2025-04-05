@@ -8,7 +8,6 @@ export default function Menu() {
     const totalPrice = useSelector((state) => state.pizza.totalPrice);
     const cartList = useSelector((state) => state.pizza.cartList);
 
-
     const pizzaClick = (id) => {
         navigate(`/pizza/${id}`);
     };

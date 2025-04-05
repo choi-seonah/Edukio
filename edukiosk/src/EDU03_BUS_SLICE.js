@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import busList from "./EDU03_LIST";
+import busList from "./EDU03_List";
 
 const initialState ={
     busList: busList,
@@ -11,10 +11,7 @@ const busSlice = createSlice({
     name:"useBus",
     initialState,
     reducers:{
-        busPrice:(state, action)=>{
-            // const busResult = //20000 * 좌석선택값 
         
-        },
         findTicket: (state, action) => {
             const bookingTicket = state.busList.find((bus) => bus.id === action.payload);
             if (bookingTicket) {

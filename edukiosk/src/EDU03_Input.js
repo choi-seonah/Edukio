@@ -1,11 +1,8 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { findTicket } from './EDU03_BUS_SLICE';
-import busList from "./EDU03_LIST";
+import busList from "./EDU03_List";
 export default function BookingInput() {
   const [bookingNumber, setBookingNumber] = useState("");
-  // const dispatch = useDispatch(); 빈주석들 지우기
   const navigate = useNavigate();
   
 
@@ -17,9 +14,9 @@ export default function BookingInput() {
         const bookingTicket = e.target.text.value;
         const searchId = busList.find((bus)=> bus.id === bookingTicket)
         if(searchId){
-          navigate("/busselect"); //경로명 바꾸기
+          navigate("/busselect/businput/busprint",{state:searchId});
         }else{
-          alert("없음"); //멘트 바꾸기
+          alert("없는 예약번호 입니다."); 
         }
       }}>
         <h2>예매티켓찾기</h2>

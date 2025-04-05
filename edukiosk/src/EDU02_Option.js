@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectOption, setTotalPrice } from "./EDU02_PIZZA_SLICE";
+import { selectOption, setTotalPrice } from "./EDU02_Pizza_Slice";
 
 export default function Option() {
   const { pizzaID } = useParams();

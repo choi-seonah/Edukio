@@ -1,19 +1,9 @@
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-
+import { useLocation } from 'react-router-dom';
 export default function BookingPrint() {
-    const navigate = useNavigate();
 
-    const selectedTicket = useSelector((state) => state.useBus.selectedTicket);
+      const location = useLocation()
+      const selectedTicket = location.state;
 
-    if (!selectedTicket) {
-        return (
-            <>
-            <p>예매 정보가 없습니다.</p>
-            <button onClick={() => navigate("/bookinginput")}>이전으로</button>
-            </>
-        )
-    }
 
     return (
       <>

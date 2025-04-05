@@ -1,4 +1,4 @@
-import busList from "./EDU03_LIST";
+import busList from "./EDU03_List";
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 

@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import PizzaSlice from "./EDU02_PIZZA_SLICE";
+import PizzaSlice from "./EDU02_Pizza_Slice";
 
 const store = configureStore({
     reducer: {

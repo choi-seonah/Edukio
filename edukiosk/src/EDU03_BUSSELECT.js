@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "./css/EDU03_BUSSELECT.css";
+import "./css/EDU03_BusSelect.css";
 
 export default function BusSelect(){
     const navigate = useNavigate();
