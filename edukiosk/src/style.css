@@ -411,3 +411,33 @@ header button {
 #way .page-title {
     margin-bottom: 40px;
 }
+
+/* EDU02_Pay */
+#pizza-pay {
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 12vh;
+}
+
+#pizza-pay .page-title {
+    margin-bottom: 30px;
+}
+
+#pizza-pay .pay-img {
+    width: 400px;
+    margin: 0 auto;
+}
+
+#pizza-pay .noti-title {
+    font-weight: 700;
+    font-size: 28px;
+    margin-top: 20px;
+}
+
+#pizza-pay .noti-txt {
+    margin-top: 15px;
+}
+

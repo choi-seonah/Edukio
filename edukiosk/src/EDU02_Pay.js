@@ -7,13 +7,13 @@ function Pizzapayment() {
 
     return (
         <>
-            <h1>결제</h1><br />
-            <img src={payImage} id="pizzapaypic"></img>
-            <br />
-            <p>IC칩을 그림과 같이 삽입해 주세요.</p>
-            <p>카드의 전면부 금색칩이 기계 안으로 삽입되면 결제가 가능해요!</p>
-            <button onClick={(e) => { pizzapaynavigate("/pizzapaycomplete") }}>삽입완료</button>
-
+        <div id='pizza-pay' className='inner'>
+            <h1 className='page-title'>신용카드 결제</h1>
+            <img className='pay-img' src="../media/pay.png"/>
+            <p className='noti-title'>카드를 삽입해주세요</p>
+            <p className='noti-txt'>결제가 끝날때까지 카드를 뽑지 마세요.</p>
+            {/* <button onClick={(e) => { pizzapaynavigate("/pizzapaycomplete") }}>삽입완료</button> */}
+        </div>
         </>
     );
 }
