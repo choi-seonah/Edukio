@@ -19,8 +19,6 @@ const cartSlice = createSlice({
       { id: 5, name: "addpepporoni", price: 800, amount: 1 },
       { id: 6, name: "edgesweetpotato", price: 2500, amount: 1 },
       { id: 7, name: "crustcheese", price: 2000, amount: 1 },
-      { id: 8, name: "coke", src: "/media/coke.JPG", price: 2500, amount: 1 },
-      { id: 9, name: "spaghetti", src: "/media/spaghetti.JPG", price: 4500, amount: 1 },
     ],
     cartList: [],
     totalPrice: 0,
