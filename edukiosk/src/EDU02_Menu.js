@@ -22,22 +22,23 @@ export default function Menu() {
   }
   return (
     <>
+    <div id="menu" className='inner'>
       {/* 메뉴 */}
-      <h2>Pizza</h2>
-      <ul className="pizza-list">
+      <h2 className='page-title'>메뉴를 선택해주세요</h2>
+      <ul className="product-list">
         {pizzamenuList.map(pizza => (
           <li onClick={() => handlePizzaClick(pizza.name)}>
-            <img src={pizza.src} width="100" height="50" />
-            <p>{pizza.name}</p>
-            <p>{pizza.price}원</p>
+            <label style={{ cursor: "pointer" }}>
+              <img src={pizza.src} />
+            </label>
+            <p className='product-name'>{pizza.name}</p>
+            <p className='product-price'>{pizza.price}원</p>
           </li>
         ))}
       </ul>
 
       {/* 장바구니 */}
-      <hr></hr>
-      <h1>장바구니</h1>
-      <div>
+      <div className='cart'>
         <ul className="cart-list">
           {cartList.map(product => (
             <li>
@@ -69,6 +70,8 @@ export default function Menu() {
         <button onClick={() => dispatch(clearCart())}>리셋</button>
         <Link to="/checkout">결제화면으로</Link>
       </div>
+      {/* //cart */}
+    </div>
     </>
   );
 }
