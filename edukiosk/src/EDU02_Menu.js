@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, amountCount, clearCart, removeProduct } from "./mainSlice";
-import Option from "./Option";
+import { addToCart, amountCount, clearCart, removeProduct } from "./EDU02_Cart_Slice";
+import Option from "./EDU02_Option";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -12,10 +12,10 @@ export default function Menu() {
     setShowOptions(true); // 피자 클릭 → 옵션창 뜨기
   };
   const dispatch = useDispatch();
-  const pizzamenuList = useSelector(state => state.main.pizzamenuList);
-  const cartList = useSelector(state => state.main.cartList);
+  const pizzamenuList = useSelector(state => state.cart.pizzamenuList);
+  const cartList = useSelector(state => state.cart.cartList);
   const sideMenuList = [];
-  const pizzaoptionList = useSelector(state => state.main.pizzaoptionList);
+  const pizzaoptionList = useSelector(state => state.cart.pizzaoptionList);
   for (let i = 7; i < 9; i++) {
     sideMenuList.push(pizzaoptionList[i]);
   }

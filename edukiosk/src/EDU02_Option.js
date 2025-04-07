@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addToCartSide } from "./mainSlice";
+import { addToCartSide } from "./EDU02_Cart_Slice";
 import { useState } from "react";
 
 export default function Option({ onClose }) {
   const dispatch = useDispatch();
-  const pizzaoptionList = useSelector(state => state.main.pizzaoptionList);
+  const pizzaoptionList = useSelector(state => state.cart.pizzaoptionList);
   const [selectedOptions, setSelectedOptions] = useState([]);
 
-  const handleOptionClick = (optionName) => {
+  const handleOptionClick = optionName => {
     dispatch(addToCartSide(optionName));
     setSelectedOptions([...selectedOptions, optionName]);
   };

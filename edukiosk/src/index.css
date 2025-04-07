@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/*임시*/
+ul {
+    list-style: none;
+}
+
+.pizza-list {
+    display: flex;
+    gap: 10px;
+}
+
+.cart-list > li {
+    display: flex;
+    gap: 15px;
+}
