@@ -52,16 +52,7 @@ export default function BusPay() {
                 <p>최종금액 : {totalPrice}원</p>
                 <div className="paybtnclass">
                     <button className="paybtn" onClick={() => {
-                        const width = 400;
-                        const height = 600;
-                        const left = (window.screen.width - width) / 2;
-                        const top = (window.screen.height - height) / 2;
-
-                        window.open(
-                            payImage,
-                            '_blank',
-                            `width=${width},height=${height},left=${left},top=${top}`
-                        );
+                        navigate("/pay");
                     }}>결제하기</button>
                     <button className="paybtn" onClick={(e) => {
                         if (window.confirm("정말 초기화 하시겠습니까?")) {

@@ -21,7 +21,7 @@ function App() {
         <Route path="/way" element={<Way/>}></Route>
         <Route path="/menu" element={<Menu/>}></Route>
         <Route path="/checkout" element={<Checkout/>}></Route>
-        <Route path="/menu/pizzapay" element={<Pizzapayment/>}></Route>
+        <Route path="/pay" element={<Pizzapayment/>}></Route>
         <Route path="/busselect" element={<BusSelect />}></Route>
         <Route path="/busselect/businput" element={<BookingInput />}></Route>
         <Route path="/busselect/businput/busprint" element={<BookingPrint />}></Route>
