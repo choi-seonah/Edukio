@@ -29,86 +29,80 @@ export default function Checkout() {
   };
 
   return (
-    <div style={{ padding: "30px" }}>
-      <h2>결제 확인</h2>
-      <ul style={{ padding: 0, listStyle: "none" }}>
-        {cartList.map((item, idx) => (
-          <>
-          <li
-            key={idx}
-            style={{
-              border: "1px solid #ccc",
-              borderRadius: "10px",
-              padding: "15px",
-              marginBottom: "20px",
-              background: "#f9f9f9",
-            }}
-          >
-            <h3>{item.name}</h3>
-            <img src={item.src} width="120" style={{ borderRadius: "8px" }} />
-            <p>피자 가격: {item.price}원 × {item.amount}개</p>
-            {item.options && item.options.length > 0 && (
-              <div>
-                <strong>옵션:</strong>
-                <ul style={{ listStyle: "circle", marginLeft: "20px" }}>
-                  {item.options.map((opt, i) => (
-                    <>
-                    <li key={i}>
-                      {opt.name} (+{opt.price}원)
-                    </li>
-                    </>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </li>
-          <button onClick={() => dispatch(removeProduct(item.name))}>삭제</button>
-          </>
-        ))}
-        
-      </ul>
+    <div id='checkout' className='inner'>
+		<h2 className="page-title">주문 내역</h2>
+		<ul className='list'>
+			{cartList.map((item, idx) => (
+			<>
+			<li key={idx}>
+				<img className='product-img' src={item.src}/>
+				<div className='info-box'>
+					<div className='order-menu'>
+						<p className='item-name'>{item.name}</p>
+						<p className='item-amount'>{item.amount}</p>
+						<p className='item-price'>{item.price}원</p>
+					</div>
+					{item.options && item.options.length > 0 && (
+					<ul className='option-list'>
+						{item.options.map((opt, i) => (
+						<li key={i}>
+							<p>- {opt.name}</p>
+							<p className='option-price'>{opt.price}원</p>
+						</li>
+						))}
+					</ul>
+					)}
+					<div className="item-remove">
+						<button className='submit-btn' onClick={() => dispatch(removeProduct(item.name))}>삭제</button>
+					</div>
+				</div>
+			</li>
+			</>
+			))}
+		</ul>
+		
+		<div className='cp-message-wrap'>
+			{/* 쿠폰 적용 시 노출 문구 */}
+			{couponMessage && <p style={{ color: "green" }}>{couponMessage}</p>}
+			{couponError && <p style={{ color: "red" }}>{couponError}</p>}
+		</div>
 
-      {/* ✅ 총 결제 금액 (쿠폰 적용 시 할인됨) */}
-      <h2>총 결제 금액: {totalPrice.toLocaleString()}원</h2>
+		<div className='total-wrap'>
+			{/* ✅ 총 결제 금액 (쿠폰 적용 시 할인됨) */}
+			<h2 className='total-price'>총 결제 금액 <span>{totalPrice.toLocaleString()}원</span></h2>
 
-      {/* ✅ 쿠폰 적용 버튼 */}
-      <button onClick={() => setShowPopup(true)}>쿠폰 사용하기</button>
+			<div className='btn-wrap'>
+				<button className='submit-btn red-bdr' onClick={() => setShowPopup(true)}>쿠폰 사용</button>
+				<Link className='submit-btn' to="/pay">결제하기</Link>
+			</div>
+		</div>
 
-      {couponMessage && <p style={{ color: "green" }}>{couponMessage}</p>}
-      {couponError && <p style={{ color: "red" }}>{couponError}</p>}
+		{/* ✅ 팝업 창 */}
+		{showPopup && (
+		<div id='popup-coupon-input' className='popup'>
+	        <div className='dim'></div>
+			<div className='popup-content'>
+			<h3 className='title'>쿠폰 코드 입력</h3>
+			<input className='coupon-input'
+				type="text"
+				value={couponCode}
+				onChange={(e) => setCouponCode(e.target.value)}
+				placeholder="예: AZ58461"/>
+			<div className='btn-wrap half'>
+				<button className='submit-btn' onClick={handleApplyCoupon}>적용</button>
+				<button className='submit-btn gray' onClick={() => setShowPopup(false)}>닫기</button>
+			</div>
+			</div>
+		</div>
+		)}
 
-      {/* ✅ 팝업 창 */}
-      {showPopup && (
-        <div style={{
-          position: "fixed", top: 0, left: 0, width: "100%", height: "100%",
-          background: "rgba(0,0,0,0.5)", display: "flex",
-          justifyContent: "center", alignItems: "center"
-        }}>
-          <div style={{
-            background: "#fff", padding: "20px", borderRadius: "10px", width: "300px", textAlign: "center"
-          }}>
-            <h3>쿠폰 코드 입력</h3>
-            <input
-              type="text"
-              value={couponCode}
-              onChange={(e) => setCouponCode(e.target.value)}
-              placeholder="예: AZ58461"
-              style={{ width: "100%", padding: "8px", marginBottom: "10px" }}
-            />
-            <div>
-              <button onClick={handleApplyCoupon}>적용</button>
-              <button onClick={() => setShowPopup(false)} style={{ marginLeft: "10px" }}>닫기</button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      <Link to="/pay">결제하기</Link>
-      <p class="checkhelpclass">도움말</p>
-      <p class="checkhelp">쿠폰을 보유중이시면 쿠폰 사용하기를 눌러주신 후 <br/>
-        쿠폰번호를 입력해주시면 됩니다. <br />
-        이 후 결제하기 버튼을 눌러주시면 결제창이 나옵니다.
-        </p>
+		<div className='checkhelp-wrap'>
+			<p class="checkhelpclass">도움말</p>
+			<p class="checkhelp">쿠폰을 보유중이시면 쿠폰 사용하기를 눌러주신 후 <br/>
+				쿠폰번호를 입력해주시면 됩니다. <br />
+				이 후 결제하기 버튼을 눌러주시면 결제창이 나옵니다.
+			</p>
+		</div>
     </div>
   );
 }
