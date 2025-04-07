@@ -14,11 +14,6 @@ export default function Menu() {
   const dispatch = useDispatch();
   const pizzamenuList = useSelector(state => state.cart.pizzamenuList);
   const cartList = useSelector(state => state.cart.cartList);
-  const sideMenuList = [];
-  const pizzaoptionList = useSelector(state => state.cart.pizzaoptionList);
-  for (let i = 7; i < 9; i++) {
-    sideMenuList.push(pizzaoptionList[i]);
-  }
   let totalPrice = 0;
   for (let product of cartList) {
     const optionTotal = product.options ? product.options.reduce((sum, opt) => sum + opt.price, 0) : 0;
@@ -72,7 +67,7 @@ export default function Menu() {
         <h2>총 금액: {totalPrice}원</h2>
 
         <button onClick={() => dispatch(clearCart())}>리셋</button>
-        <Link to="/menu/pizzapay">결제화면으로</Link>
+        <Link to="/checkout">결제화면으로</Link>
       </div>
     </>
   );
