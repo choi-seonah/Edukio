@@ -24,12 +24,20 @@
     background-color: var(--red);
     color: white;
 }
-.txt-explanation{
-    background-color: #F1F4F6;
-    text-align: center;
-}
-#help{
-    background-color: gray;
+.txt-explanation {
+    padding: 20px;
+    border-radius: 0 0 10px 10px;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 10px;
+  }
+  
+  .help-label {
+    background-color: #666;
     color: white;
-    
-}
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 6px 6px 0 0;
+    font-size: 14px;
+  }
+  

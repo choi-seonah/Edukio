@@ -70,18 +70,19 @@ export default function Seat() {
                     fontWeight: "bold",
                     marginBottom: "20px"
                 }}>좌석 현황</h2>
-                <span id="help">도움말</span>
 
                 <div className="txt-right">
                     <div>{blankSeat}</div>
                     <div className="txt-explanation">
+                        <div className="help-label">도움말</div> 
+
                         <p>원하시는 좌석을 선택해 주세요.</p>
-                        <p>이미 자리가 있는 좌석은 회색 표시됩니다. <br />
-                            빈자리는 흰색으로 표시됩니다.
-                        </p>
+                        <p>이미 자리가 있는 좌석은 회색 표시됩니다.</p>
+                        <p>빈자리는 흰색으로 표시됩니다.</p>
                         <p>현재 클릭 된 자리는 하늘색으로 표시됩니다.</p>
                         <p>선택이 끝나시면 최종 결제창으로 이동해주세요.</p>
                     </div>
+
                 </div>
 
 
