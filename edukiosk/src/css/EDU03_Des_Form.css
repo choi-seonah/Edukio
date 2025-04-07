@@ -1,0 +1,56 @@
+.desbody{
+    margin-left:10px;
+}
+
+.destitle{
+    font-weight:bold;
+    margin-top:10px;
+}
+
+select{
+    cursor:pointer;
+}
+
+.bussquare{
+    border:1px black solid;
+    margin-right:10px;
+    padding-left:5px;
+}
+
+.bussquare2{
+    border:1px black solid;
+    margin-right:10px;
+    padding:0px 5px 0px 5px;
+}
+
+.desselect{
+    background-color:rgb(201, 201, 201);
+    padding:0px 5px 0px 5px;
+}
+
+.desbtn{
+    background: var(--red);
+    padding:3px 20px 3px 20px;
+    cursor:pointer;
+    text-align:center;
+    color:white;
+}
+
+.desbtnclass{
+    text-align:center;
+}
+
+.deshelptitle{
+    text-align:center;
+    margin:0px 300px 10px 300px;
+    padding:5px;
+    background-color:gray;
+    color:white;
+}
+
+.deshelp{
+    margin-left:10px;
+    margin-right:10px;
+    padding:5px;
+    background-color:rgb(201,201,201);
+}
