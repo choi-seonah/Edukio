@@ -1,17 +1,29 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { setTotalPrice, findCoupon } from "./EDU02_Cart_Slice";
 
 export default function Checkout() {
-  const cartList = useSelector(state => state.cart.cartList);
+  const dispatch = useDispatch();
+  const cartList = useSelector((state) => state.cart.cartList);
+  const totalPrice = useSelector((state) => state.cart.totalPrice); // ✅ Redux 금액
+  const couponError = useSelector((state) => state.cart.couponError);
+  const couponMessage  = useSelector(state => state.cart.couponMessage );
 
-  // 총합 계산
-  const totalPrice = cartList.reduce((acc, product) => {
-    const base = product.price * product.amount;
-    const optionPrice = product.options
-      ? product.options.reduce((sum, opt) => sum + opt.price, 0)
-      : 0;
-    return acc + base + optionPrice;
-  }, 0);
+  const [showPopup, setShowPopup] = useState(false);
+  const [couponCode, setCouponCode] = useState("");
+
+  // ✅ 장바구니 변경될 때마다 총합 계산
+  useEffect(() => {
+    dispatch(setTotalPrice());
+  }, [cartList]);
+
+  const handleApplyCoupon = () => {
+    dispatch(setTotalPrice());         // 최신 총합 계산
+    dispatch(findCoupon(couponCode));  // 쿠폰 적용
+    setShowPopup(false);               // 팝업 닫기
+    setCouponCode("");                 // 입력 초기화
+  };
 
   return (
     <div style={{ padding: "30px" }}>
@@ -32,7 +44,6 @@ export default function Checkout() {
             <img src={item.src} width="120" style={{ borderRadius: "8px" }} />
             <p>피자 가격: {item.price}원 × {item.amount}개</p>
 
-            {/* 옵션 목록 */}
             {item.options && item.options.length > 0 && (
               <div>
                 <strong>옵션:</strong>
@@ -49,7 +60,43 @@ export default function Checkout() {
         ))}
       </ul>
 
+      {/* ✅ 총 결제 금액 (쿠폰 적용 시 할인됨) */}
       <h2>총 결제 금액: {totalPrice.toLocaleString()}원</h2>
+
+      {/* ✅ 쿠폰 적용 버튼 */}
+      <button onClick={() => setShowPopup(true)}>쿠폰 사용하기</button>
+
+      {couponMessage  && <p style={{ color: "green" }}>{couponMessage }</p>}
+
+      {/* ✅ 쿠폰 에러 메시지 */}
+      {couponError && <p style={{ color: "red" }}>{couponError}</p>}
+
+      {/* ✅ 팝업 창 */}
+      {showPopup && (
+        <div style={{
+          position: "fixed", top: 0, left: 0, width: "100%", height: "100%",
+          background: "rgba(0,0,0,0.5)", display: "flex",
+          justifyContent: "center", alignItems: "center"
+        }}>
+          <div style={{
+            background: "#fff", padding: "20px", borderRadius: "10px", width: "300px", textAlign: "center"
+          }}>
+            <h3>쿠폰 코드 입력</h3>
+            <input
+              type="text"
+              value={couponCode}
+              onChange={(e) => setCouponCode(e.target.value)}
+              placeholder="예: AZ58461"
+              style={{ width: "100%", padding: "8px", marginBottom: "10px" }}
+            />
+            <div>
+              <button onClick={handleApplyCoupon}>적용</button>
+              <button onClick={() => setShowPopup(false)} style={{ marginLeft: "10px" }}>닫기</button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <Link to="/menu/pizzapay">결제하기</Link>
     </div>
   );

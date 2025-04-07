@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
@@ -20,9 +21,26 @@ const cartSlice = createSlice({
       { id: 6, name: "고구마 크러스트 변경", price: 2500, amount: 1 },
       { id: 7, name: "치즈 크러스트 변경", price: 2000, amount: 1 },
     ],
+
     cartList: [],
     totalPrice: 0,
+
+    couponList: [
+      { id: "AZ58461" },
+      { id: "AD88123" },
+      { id: "AW45012" },
+      { id: "AH57033" },
+      { id: "AT77152" },
+      { id: "BT77045" },
+      { id: "BW99442" },
+      { id: "BS01523" },
+      { id: "BQ52348" },
+      { id: "BN12147" },
+    ],
+    couponSuccess: false,
+    couponMessage: "",
   },
+
   reducers: {
     clearCart: state => {
       state.cartList = [];
@@ -60,10 +78,21 @@ const cartSlice = createSlice({
       }
     },
     setTotalPrice: state => {
+      let total = 0;
+
       for (let product of state.cartList) {
-        state.totalPrice = state.totalPrice + product.amount * product.price;
+        let optionTotal = 0;
+        if (product.options) {
+          for (let opt of product.options) {
+            optionTotal += opt.price;
+          }
+        }
+        total += (product.price + optionTotal) * product.amount;
       }
+
+      state.totalPrice = total; // 기존 totalPrice에 누적하지 말고, 새로 계산한 값만 넣기
     },
+
     removeProduct: (state, action) => {
       const newCartList = state.cartList.filter(e => e.name !== action.payload);
       state.cartList = newCartList;
@@ -76,8 +105,23 @@ const cartSlice = createSlice({
         product.amount = _amount;
       }
     },
+    findCoupon: (state, action) => {
+      const coupon = state.couponList.find(c => c.id === action.payload);
+
+      if (coupon) {
+        state.totalPrice = state.totalPrice * 0.8; // 20% 할인만 적용!
+        state.couponError = null;
+        state.couponSuccess = true;
+        state.couponMessage = "✅ 쿠폰이 적용되어 20% 할인이 되었습니다!";
+      } else {
+        state.couponError = "존재하지 않는 쿠폰입니다.";
+        state.couponSuccess = false;
+        state.couponMessage = "";
+      }
+    }
+
   },
 });
 
-export const { addToCartSide, clearCart, addToCart, setTotalPrice, removeProduct, amountCount } = cartSlice.actions;
+export const { addToCartSide, clearCart, addToCart, setTotalPrice, removeProduct, amountCount, findCoupon } = cartSlice.actions;
 export default cartSlice;

@@ -18,8 +18,8 @@ function App() {
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Select />}></Route>
-        <Route path="/menu" element={<Menu/>}></Route>
         <Route path="/way" element={<Way/>}></Route>
+        <Route path="/menu" element={<Menu/>}></Route>
         <Route path="/checkout" element={<Checkout/>}></Route>
         <Route path="/menu/pizzapay" element={<Pizzapayment/>}></Route>
         <Route path="/busselect" element={<BusSelect />}></Route>
