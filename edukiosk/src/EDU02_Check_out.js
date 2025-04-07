@@ -8,7 +8,7 @@ export default function Checkout() {
   const cartList = useSelector((state) => state.cart.cartList);
   const totalPrice = useSelector((state) => state.cart.totalPrice); // ✅ Redux 금액
   const couponError = useSelector(state => state.cart.couponError);
-  const couponMessage = useSelector(state=> state.cart.couponMessage);
+  const couponMessage = useSelector(state => state.cart.couponMessage);
 
   const [showPopup, setShowPopup] = useState(false);
   const [couponCode, setCouponCode] = useState("");
@@ -32,6 +32,7 @@ export default function Checkout() {
       <h2>결제 확인</h2>
       <ul style={{ padding: 0, listStyle: "none" }}>
         {cartList.map((item, idx) => (
+          <>
           <li
             key={idx}
             style={{
@@ -45,21 +46,25 @@ export default function Checkout() {
             <h3>{item.name}</h3>
             <img src={item.src} width="120" style={{ borderRadius: "8px" }} />
             <p>피자 가격: {item.price}원 × {item.amount}개</p>
-            <button onClick={() => dispatch(removeProduct(item.name))}>삭제</button>
             {item.options && item.options.length > 0 && (
               <div>
                 <strong>옵션:</strong>
                 <ul style={{ listStyle: "circle", marginLeft: "20px" }}>
                   {item.options.map((opt, i) => (
+                    <>
                     <li key={i}>
                       {opt.name} (+{opt.price}원)
                     </li>
+                    </>
                   ))}
                 </ul>
               </div>
             )}
           </li>
+          <button onClick={() => dispatch(removeProduct(item.name))}>삭제</button>
+          </>
         ))}
+        
       </ul>
 
       {/* ✅ 총 결제 금액 (쿠폰 적용 시 할인됨) */}
@@ -67,7 +72,7 @@ export default function Checkout() {
 
       {/* ✅ 쿠폰 적용 버튼 */}
       <button onClick={() => setShowPopup(true)}>쿠폰 사용하기</button>
-      
+
       {couponMessage && <p style={{ color: "green" }}>{couponMessage}</p>}
       {couponError && <p style={{ color: "red" }}>{couponError}</p>}
 

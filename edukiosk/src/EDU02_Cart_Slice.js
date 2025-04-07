@@ -121,10 +121,13 @@ const cartSlice = createSlice({
         state.couponMessage = "";                         // 메시지 비우기
       }
 
-    }
+    },
+    clearInfo: (state) => {
+      state.couponMessage = null;
+    },
 
   },
 });
 
-export const { addToCartSide, clearCart, addToCart, setTotalPrice, removeProduct, amountCount, findCoupon } = cartSlice.actions;
+export const { addToCartSide, clearCart, addToCart, setTotalPrice, removeProduct, amountCount, findCoupon, clearInfo } = cartSlice.actions;
 export default cartSlice;
