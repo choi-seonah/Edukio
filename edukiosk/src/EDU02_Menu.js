@@ -36,42 +36,52 @@ export default function Menu() {
           </li>
         ))}
       </ul>
-
-      {/* 장바구니 */}
-      <div className='cart'>
-        <ul className="cart-list">
-          {cartList.map(product => (
-            <li>
-              <p>{product.name}</p>
-              <p>{product.price}원</p>
-              {product.options && product.options.length > 0 && (
-                <ul>
-                  {product.options.map(opt => (
-                    <li key={opt.name}>
-                      + {opt.name} ({opt.price}원)
-                    </li>
-                  ))}
-                </ul>
-              )}
-              {showOptions && <Option onClose={() => setShowOptions(false)} />}
-              <p>총 가격: {(product.price + (product.options?.reduce((a, c) => a + c.price, 0) || 0)) * product.amount}원</p>
-
-              <input type="number" min={1} value={product.amount} onChange={e => dispatch(amountCount({ _name: product.name, _amount: e.target.value }))} />
-              <button onClick={() => dispatch(removeProduct(product.name))}>X</button>
-
-              <ul>
-                <li></li>
-              </ul>
-            </li>
-          ))}
-        </ul>
-        <h2>총 금액: {totalPrice}원</h2>
-
-        <button onClick={() => dispatch(clearCart())}>리셋</button>
-        <Link to="/checkout">결제화면으로</Link>
-      </div>
-      {/* //cart */}
     </div>
+
+    {/* 장바구니 */}
+    <div id='cart'>
+        <ul className='cart-list-head'>
+            <li>메뉴</li>
+            <li>수량</li>
+            <li>가격</li>
+            <li></li>
+        </ul>
+        <ul className="cart-list">
+            {cartList.map(product => (
+            <li>
+                <div className='item-menu'>
+                    <p className='product-name'>{product.name}</p>
+                    {product.options && product.options.length > 0 && (
+                    <ul className='menu-option'>
+                        {product.options.map(opt => (
+                        <li key={opt.name}>
+                            + {opt.name} ({opt.price}원)
+                        </li>
+                        ))}
+                    </ul>
+                    )}
+                    {showOptions && <Option onClose={() => setShowOptions(false)} />}
+                </div>
+                <div className='item-count'>
+                    <input type="number" min={1} value={product.amount} onChange={e => dispatch(amountCount({ _name: product.name, _amount: e.target.value }))} />
+
+                </div>
+                <p className='item-price'>{(product.price + (product.options?.reduce((a, c) => a + c.price, 0) || 0)) * product.amount}원</p>
+                <div className='item-remove'>
+                    <button onClick={() => dispatch(removeProduct(product.name))}>X</button>
+                </div>
+            </li>
+            ))}
+        </ul>
+        <div className='total-wrap'>
+            <h2 className='total-price'>총 금액 <span>{totalPrice}원</span></h2>
+            <div className='btn-wrap'>
+                <button className='submit-btn gray' onClick={() => dispatch(clearCart())}>전체취소</button>
+                <Link className='submit-btn' to="/checkout">주문하기</Link>
+            </div>
+        </div>
+    </div>
+    {/* //cart */}
     </>
   );
 }

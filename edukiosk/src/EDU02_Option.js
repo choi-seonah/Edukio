@@ -25,42 +25,30 @@ export default function Option({ onClose }) {
     onClose(); // 창 닫기
   };
 
-  console.log("🍕 옵션 리스트:", pizzaoptionList);
-
   return (
-    <div
-      style={{
-        width: "300px",
-        padding: "20px",
-        border: "2px solid #888",
-        borderRadius: "8px",
-        background: "#fff",
-        boxShadow: "0 0 10px rgba(0,0,0,0.1)",
-        position: "absolute",
-        top: "20%",
-        left: "50%",
-        transform: "translateX(-50%)",
-        zIndex: 1000,
-      }}
-    >
-      <h3>옵션 선택</h3>
-      <ul style={{ listStyle: "none", padding: 0 }}>
-        {pizzaoptionList.map(option => (
-          <li key={option.id} style={{ marginBottom: "8px" }}>
-            <label
-              style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer" }}
-            >
-              <input
-                type="checkbox"
-                checked={selectedOptions.includes(option.name)}
-                onChange={() => handleCheckboxChange(option.name)}
-              />
-              {option.name} - {option.price}원
-            </label>
-          </li>
-        ))}
-      </ul>
-      <button onClick={handleDone}>선택 완료</button>
+    <div id='Option' className='popup'>
+        <div className='dim'></div>
+        <div className='popup-content'>
+            <h3 className='page-title'>옵션을 선택해주세요</h3>
+            
+            <ul className='option-list'>
+                {pizzaoptionList.map(option => (
+                <li key={option.id}>
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked={selectedOptions.includes(option.name)}
+                            onChange={() => handleCheckboxChange(option.name)}
+                        />
+                        {option.name}<span className='option-price'>+{option.price}원</span>
+                    </label>
+                </li>
+                ))}
+            </ul>
+            <div className='btn-wrap'>
+                <button className='submit-btn wd-full' onClick={handleDone}>선택 완료</button>
+            </div>
+        </div>
     </div>
   );
 }
