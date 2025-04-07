@@ -11,6 +11,7 @@ import BookingInput from "./EDU03_Input";
 import BookingPrint from "./EDU03_Print"; 
 import Pizzapayment from "./EDU02_Pay";
 import Checkout from './EDU02_Check_out';
+import Way from "./EDU02_Way";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Select />}></Route>
         <Route path="/menu" element={<Menu/>}></Route>
+        <Route path="/way" element={<Way/>}></Route>
         <Route path="/checkout" element={<Checkout/>}></Route>
         <Route path="/menu/pizzapay" element={<Pizzapayment/>}></Route>
         <Route path="/busselect" element={<BusSelect />}></Route>
