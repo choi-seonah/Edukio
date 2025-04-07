@@ -9,15 +9,15 @@ export default function Menu() {
   const pizzamenuList = useSelector(state => state.cart.pizzamenuList);
   const cartList = useSelector(state => state.cart.cartList);
 
-  // ✅ 추가: 어떤 피자에 옵션을 붙이는지 저장
+  //  추가: 어떤 피자에 옵션을 붙이는지 저장
   const [targetPizzaName, setTargetPizzaName] = useState(null);
   const [showOptions, setShowOptions] = useState(false);
   const [showCart, setShowCart] = useState(false);
 
-  // ✅ 피자 클릭 시: 카트에 추가 + 옵션창 열기
+  //  피자 클릭 시: 카트에 추가 + 옵션창 열기
   const handlePizzaClick = pizzaName => {
     dispatch(addToCart(pizzaName));
-    setTargetPizzaName(pizzaName); // ✅ 타겟 피자 설정
+    setTargetPizzaName(pizzaName); //  타겟 피자 설정
     setShowOptions(true); // 옵션창 열기
   };
 
@@ -43,9 +43,17 @@ export default function Menu() {
             </li>
           ))}
         </ul>
+          <div>
+            <p>도움말</p>
+            <p>원하시는 피자 종류를 골라주신 후 <br />
+               추가로 필요하신 옵션을 클릭해 주시면 됩니다. <br />
+               선택이 끝나신 후 더 필요하신 피자가 있으시면 한 번 더 클릭해서 <br />
+               담아주시고 주문하기를 누르시면 다음 화면으로 넘어갑니다.
+            </p>
+          </div>
       </div>
 
-      {/* ✅ 장바구니는 옵션창과 분리된 상태로 조건부 렌더링 */}
+      {/*  장바구니는 옵션창과 분리된 상태로 조건부 렌더링 */}
       {showCart && (
         <div id='cart'>
           <ul className='cart-list-head'>
