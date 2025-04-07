@@ -1,26 +1,31 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./css/EDU03_BusSelect.css";
 
 
 export default function BusSelect(){
     const navigate = useNavigate();
     return(
-        <div className="busselect">
-        <h1 className="bustitle">예매 방식을 선택해주세요</h1>
-        <h2>현장에서 예매를 원하시면 왼쪽을 클릭해주세요.</h2>
-        <h2>온라인(핸드폰,인터넷)으로 예약하신분은 오른쪽을 클릭해주세요.</h2><hr/>
-        <img className="busimg" src="./media/kioskicon.png" onClick={(e)=>{
-            navigate("/busselect/busdes");
-        }}></img>  
+        <div id='bus-select' className='inner'>
+            <h1 className='page-title'>예매 방식을 선택해주세요</h1>
+            <div className='noti-box'>
+                - 현장에서 예매를 원하시면 왼쪽을 클릭해주세요.<br/>
+                - 온라인(핸드폰,인터넷)으로 예약하신분은 오른쪽을 클릭해주세요.
+            </div>
 
-        <img className="busimg" src="./media/ticketicon.png" onClick={(e)=>{
-            navigate("/busselect/businput");
-        }}></img><hr/>
-        <p>
-        <span className="businfo">현장 예매방식</span>
-        <span className="businfo">온라인 예약방식</span>
-        </p><hr/>
-
+            <ul className='select-list'>
+                <li>
+                    <Link to='/busselect/busdes'>
+                        <img className='ico' src="./media/ico_kiosk.png"></img>
+                        <p className='title'>현장 예매</p>
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/busselect/businput'>
+                        <img className='ico' src="./media/ico_ticket.png"></img>
+                        <p className='title'>예매 티켓 출력</p>
+                    </Link>
+                </li>
+            </ul>
         </div>
     );
 }
