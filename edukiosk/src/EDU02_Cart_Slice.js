@@ -98,6 +98,8 @@ const cartSlice = createSlice({
     removeProduct: (state, action) => {
       const newCartList = state.cartList.filter(e => e.name !== action.payload);
       state.cartList = newCartList;
+      state.couponMessage = null;
+      state.couponError = null;
     },
     amountCount: (state, action) => {
       // 네임이랑 밸류값을 객체로 가져오게 된다. => 내보낼 때도 객체로(중괄호) 내보내기!!
@@ -124,6 +126,7 @@ const cartSlice = createSlice({
     },
     clearInfo: (state) => {
       state.couponMessage = null;
+      state.couponError = null;
     },
 
   },
