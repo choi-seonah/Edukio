@@ -3,6 +3,7 @@ import { addToCart, amountCount, clearCart, removeProduct } from "./EDU02_Cart_S
 import Option from "./EDU02_Option";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import "./css/EDU02_Menu.css";
 
 export default function Menu() {
   const dispatch = useDispatch();
@@ -44,8 +45,8 @@ export default function Menu() {
           ))}
         </ul>
           <div>
-            <p>도움말</p>
-            <p>원하시는 피자 종류를 골라주신 후 <br />
+            <p class="menuhelpclass">도움말</p>
+            <p class="menuhelp">원하시는 피자 종류를 골라주신 후 <br />
                추가로 필요하신 옵션을 클릭해 주시면 됩니다. <br />
                선택이 끝나신 후 더 필요하신 피자가 있으시면 한 번 더 클릭해서 <br />
                담아주시고 주문하기를 누르시면 다음 화면으로 넘어갑니다.
