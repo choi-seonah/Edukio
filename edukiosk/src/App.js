@@ -9,13 +9,15 @@ import MainLayout from "./MainLayout";
 import Menu from "./EDU02_Menu";
 import BookingInput from "./EDU03_Input";
 import BookingPrint from "./EDU03_Print"; 
+import Pizzapayment from "./EDU02_Pay";
+
 function App() {
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Select />}></Route>
         <Route path="/menu" element={<Menu/>}></Route>
-        <Route path="/menu/pizzapay" element={<Pizzapayment />}></Route>
+        <Route path="/menu/pizzapay" element={<Pizzapayment/>}></Route>
         <Route path="/busselect" element={<BusSelect />}></Route>
         <Route path="/busselect/businput" element={<BookingInput />}></Route>
         <Route path="/busselect/businput/busprint" element={<BookingPrint />}></Route>

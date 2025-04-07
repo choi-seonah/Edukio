@@ -17,6 +17,7 @@ function Pizzapayment(){
     </>);
 }
 
+/*
 function Pizzapaycomplete(){
     return(
         <>
@@ -24,12 +25,6 @@ function Pizzapaycomplete(){
         </>
     );
 }
+*/
 
-export default function Pizzapay(){
-    return(
-        <Routes>
-            <Route path="/pizzapay" element={<Pizzapayment/>}></Route>
-            <Route path="/pizzapaycomplete" element={<Pizzapaycomplete/>}></Route>
-        </Routes>
-    );
-}
+export default Pizzapayment;

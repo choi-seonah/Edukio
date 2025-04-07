@@ -72,7 +72,7 @@ export default function Menu() {
         <h2>총 금액: {totalPrice}원</h2>
 
         <button onClick={() => dispatch(clearCart())}>리셋</button>
-        <Link to="/checkout">결제화면으로</Link>
+        <Link to="/menu/pizzapay">결제화면으로</Link>
       </div>
     </>
   );
