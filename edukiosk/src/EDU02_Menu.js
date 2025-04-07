@@ -14,11 +14,6 @@ export default function Menu() {
   const dispatch = useDispatch();
   const pizzamenuList = useSelector(state => state.cart.pizzamenuList);
   const cartList = useSelector(state => state.cart.cartList);
-  const sideMenuList = [];
-  const pizzaoptionList = useSelector(state => state.cart.pizzaoptionList);
-  for (let i = 7; i < 9; i++) {
-    sideMenuList.push(pizzaoptionList[i]);
-  }
   let totalPrice = 0;
   for (let product of cartList) {
     const optionTotal = product.options ? product.options.reduce((sum, opt) => sum + opt.price, 0) : 0;

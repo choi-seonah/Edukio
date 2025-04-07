@@ -25,6 +25,8 @@ export default function Option({ onClose }) {
     onClose(); // 창 닫기
   };
 
+  console.log("🍕 옵션 리스트:", pizzaoptionList);
+
   return (
     <div
       style={{
@@ -44,14 +46,15 @@ export default function Option({ onClose }) {
       <h3>옵션 선택</h3>
       <ul style={{ listStyle: "none", padding: 0 }}>
         {pizzaoptionList.map(option => (
-          <li key={option.id} style={{ marginBottom: "8px", display: "flex", alignItems: "center", gap: "8px" }}>
-            <input
-              id={option.id}
-              type="checkbox"
-              checked={selectedOptions.includes(option.name)}
-              onChange={() => handleCheckboxChange(option.name)}
-            />
-            <label for={option.id}>
+          <li key={option.id} style={{ marginBottom: "8px" }}>
+            <label
+              style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer" }}
+            >
+              <input
+                type="checkbox"
+                checked={selectedOptions.includes(option.name)}
+                onChange={() => handleCheckboxChange(option.name)}
+              />
               {option.name} - {option.price}원
             </label>
           </li>
