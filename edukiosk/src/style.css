@@ -61,6 +61,12 @@ header button {
     text-indent: -9999px;
 }
 
+.page-title {
+    font-size: 35px;
+    font-weight: 700;
+    margin-top: 30px;
+}
+
 /* EDU01_Select */
 #select {
     text-align: center;
@@ -126,14 +132,36 @@ header button {
     margin-top: 15px;
 }
 
-
 /* EDU02_Menu */
-.pizza-list {
+#menu .product-list {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
+    margin-top: 20px;
 }
 
-.cart-list > li {
+#menu .product-list > li {
+    width: calc((100% - 20px) / 3);
+    border: 2px solid var(--gray-ddd);
+    padding: 12px;
+    box-sizing: border-box;
+    border-radius: 7px;
+    transition: 0.5s;
+}
+
+#menu .product-list > li img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+#menu .product-list .product-name {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+#menu .cart-list > li {
     display: flex;
     gap: 15px;
 }
