@@ -1,32 +1,53 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
     pizzamenuList: [
-      { id: 1, name: "bacon", src: "/media/bacon.jpg", price: 18000, amount: 1 },
-      { id: 2, name: "pepporoni", src: "/media/pepporoni.jpg", price: 16000, amount: 1 },
-      { id: 3, name: "hawaiian", src: "/media/hawaiian.jpg", price: 21000, amount: 1 },
-      { id: 4, name: "margherita", src: "/media/margherita.jpg", price: 17000, amount: 1 },
-      { id: 5, name: "bulgogi", src: "/media/bulgogi.jpg", price: 20000, amount: 1 },
-      { id: 6, name: "sweetpotato", src: "/media/sweetpotato.jpg", price: 15000, amount: 1 },
+      { id: 1, name: "베이컨 피자", src: "/media/bacon.jpg", price: 18000, amount: 1 },
+      { id: 2, name: "페퍼로니 피자", src: "/media/pepporoni.jpg", price: 16000, amount: 1 },
+      { id: 3, name: "하와이안 피자", src: "/media/hawaiian.jpg", price: 21000, amount: 1 },
+      { id: 4, name: "마르게리따 피자", src: "/media/margherita.jpg", price: 17000, amount: 1 },
+      { id: 5, name: "불고기 피자", src: "/media/bulgogi.jpg", price: 20000, amount: 1 },
+      { id: 6, name: "고구마 피자", src: "/media/sweetpotato.jpg", price: 15000, amount: 1 },
     ],
     pizzaoptionList: [
-      { id: 1, name: "bacon", price: 700, amount: 1 },
-      { id: 2, name: "olive", price: 300, amount: 1 },
-      { id: 3, name: "cheese", price: 2000, amount: 1 },
-      { id: 4, name: "corn", price: 300, amount: 1 },
-      { id: 5, name: "addpepporoni", price: 800, amount: 1 },
-      { id: 6, name: "edgesweetpotato", price: 2500, amount: 1 },
-      { id: 7, name: "crustcheese", price: 2000, amount: 1 },
+      { id: 1, name: "베이컨 토핑 추가", price: 700, amount: 1 },
+      { id: 2, name: "올리브 토핑 추가", price: 300, amount: 1 },
+      { id: 3, name: "치즈 토핑 추가", price: 2000, amount: 1 },
+      { id: 4, name: "옥수수콘 토핑 추가", price: 300, amount: 1 },
+      { id: 5, name: "페퍼로니 토핑 추가", price: 800, amount: 1 },
+      { id: 6, name: "고구마 크러스트 변경", price: 2500, amount: 1 },
+      { id: 7, name: "치즈 크러스트 변경", price: 2000, amount: 1 },
     ],
+
     cartList: [],
     totalPrice: 0,
+
+    couponList: [
+      { id: "AZ58461" },
+      { id: "AD88123" },
+      { id: "AW45012" },
+      { id: "AH57033" },
+      { id: "AT77152" },
+      { id: "BT77045" },
+      { id: "BW99442" },
+      { id: "BS01523" },
+      { id: "BQ52348" },
+      { id: "BN12147" },
+    ],
+    couponSuccess: false,
+    couponMessage: "",
   },
+
   reducers: {
     clearCart: state => {
       state.cartList = [];
       state.totalPrice = 0;
+      state.couponSuccess = false;
+      state.couponMessage = "";
+      state.couponError = null;
     },
     addToCart: (state, action) => {
       // pizza.name랑 action.payload 같음
@@ -60,10 +81,21 @@ const cartSlice = createSlice({
       }
     },
     setTotalPrice: state => {
+      let total = 0;
+
       for (let product of state.cartList) {
-        state.totalPrice = state.totalPrice + product.amount * product.price;
+        let optionTotal = 0;
+        if (product.options) {
+          for (let opt of product.options) {
+            optionTotal += opt.price;
+          }
+        }
+        total += (product.price + optionTotal) * product.amount;
       }
+
+      state.totalPrice = total; // 기존 totalPrice에 누적하지 말고, 새로 계산한 값만 넣기
     },
+
     removeProduct: (state, action) => {
       const newCartList = state.cartList.filter(e => e.name !== action.payload);
       state.cartList = newCartList;
@@ -76,8 +108,23 @@ const cartSlice = createSlice({
         product.amount = _amount;
       }
     },
+    findCoupon: (state, action) => {
+      const coupon = state.couponList.find(c => c.id === action.payload);
+
+      if (coupon) {
+        state.totalPrice = state.totalPrice * 0.8; // 20% 할인만 적용!
+        state.couponError = null;
+        state.couponSuccess = true;
+        state.couponMessage = "✅ 쿠폰이 적용되어 20% 할인이 되었습니다!";
+      } else {
+        state.couponError = "존재하지 않는 쿠폰입니다.";
+        state.couponSuccess = false;
+        state.couponMessage = "";
+      }
+    }
+
   },
 });
 
-export const { addToCartSide, clearCart, addToCart, setTotalPrice, removeProduct, amountCount } = cartSlice.actions;
+export const { addToCartSide, clearCart, addToCart, setTotalPrice, removeProduct, amountCount, findCoupon } = cartSlice.actions;
 export default cartSlice;

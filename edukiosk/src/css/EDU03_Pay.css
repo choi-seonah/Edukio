@@ -1,0 +1,45 @@
+.paybody{
+    margin-left:10px;
+    margin-top:10px;
+}
+
+.paytitle{
+    font-weight: bold;
+}
+
+.agebtn{
+    border:1px black solid;
+    border-radius:5px;
+    padding:0px 5px;
+    margin:5px 5px 15px 0px;
+    background-color:rgb(255, 211, 211);
+}
+
+.paybtn{
+    padding:3px 20px 3px 20px;
+    cursor:pointer;
+    background: var(--red);
+    color:white;
+    margin-bottom:10px;
+    margin-right:10px;
+}
+
+.paybtnclass{
+    margin-top:20px;
+    text-align:center;
+}
+
+.payhelptitle{
+    text-align:center;
+    margin:0px 300px 10px 300px;
+    padding:5px;
+    background-color:gray;
+    color:white;
+}
+
+.payhelp{
+    margin-left:10px;
+    margin-right:10px;
+    padding:5px;
+    background-color:rgb(201,201,201);
+}

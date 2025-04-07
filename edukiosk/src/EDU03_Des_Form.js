@@ -1,6 +1,7 @@
 import busList from "./EDU03_List";
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
+import "./css/EDU03_Des_Form.css";
 
 export default function DesForm(){
     const busnavigate=useNavigate();
@@ -35,12 +36,12 @@ export default function DesForm(){
 
     return(
         <>
-        <div>
-            <h1>버스 예매하기</h1>
-            <form id="busform">
-                <div id="busstart">
-                    <span>출발지 </span>
-                    <select name="출발지" id="selectstart" 
+        <div className="desbody">
+            <h1 className="destitle">버스 예매하기</h1><hr/>
+            <form className="busform">
+                <div>
+                    <span className="bussquare">출발지 </span>
+                    <select name="출발지" className="desselect"
                     value={start} onChange={(e)=>setstart(e.target.value)}>
                         <option value="" selected="select">출발지 선택</option>
                         <option value="Seoul">서울</option>
@@ -50,9 +51,9 @@ export default function DesForm(){
                     </select>
                 </div><br/>
 
-                <div id="busdest">
-                    <span>도착지 </span>
-                    <select name="도착지" id="selectdes"
+                <div>
+                    <span className="bussquare">도착지 </span>
+                    <select name="도착지" className="desselect"
                     value={des} onChange={(e)=>setdes(e.target.value)}>
                         <option value="" selected="select">도착지 선택</option>
                         <option value="Seoul">서울</option>
@@ -65,25 +66,30 @@ export default function DesForm(){
                 </div><br/>
 
                 <div id="busdate">
-                    <label for="busformdate">날짜 </label>
-                    <input type="date" id="busformdate" value={date} onChange={(e)=>setdate(e.target.value)}></input>
+                    <label for="busformdate" className="bussquare">날짜 </label>
+                    <input className="desselect" type="date" id="busformdate" value={date} onChange={(e)=>setdate(e.target.value)}></input>
                 </div><br/>
 
                 <div id="bustime">
-                    <p>버스 시간 조회</p>
-                    <input type="time" value={starttime} onChange={(e)=>setstarttime(e.target.value)}></input>
+                    
+                    <span className="bussquare2">버스 시간 조회</span>
+                    <input className="desselect" type="time" value={starttime} onChange={(e)=>setstarttime(e.target.value)}></input>
                     <span> ~ </span>
-                    <input type="time" value={arrivetime} onChange={(e)=>setarrivetime(e.target.value)}></input>
+                    <input className="desselect" type="time" value={arrivetime} onChange={(e)=>setarrivetime(e.target.value)}></input>
                 </div><br/>
             </form>
-                <button onClick={(e)=>{Searchbus()}}>검색</button>
-
-        </div>
-        <div>
-            <p>원하시는 출발, 도착 장소와 탑승하실 날짜를 정해주세요.</p>
-            <p>버스 시간 조회는 고르신 날짜에 입력하신 시간에 있는 버스를 찾아드립니다.</p>
-            <p>선택 후에 검색 버튼을 눌러주시면 맞는 조건의 버스를 찾아드립니다.</p>
-            <p>검색된 버스가 없으면 조건을 재설정하시고 다시 검색해 주세요.</p>
+            </div>
+            <div className="desbtnclass">
+                <button className="desbtn" onClick={(e)=>{Searchbus()}}>검색</button>
+            </div>
+        <hr/>
+        <p className="deshelptitle">도움말</p>
+        
+        <div className="deshelp">
+            <p>원하시는 출발,도착장소와 탑승하실 날짜를 정해주세요.</p>
+            <p>버스 시간조회는 고르신 날짜에 입력하신 시간에 있는 버스를 찾아드립니다.</p>
+            <p>선택후에 검색버튼을 눌러주시면 맞는 조건의 버스를 찾아드립니다.</p>
+            <p>검색된 버스가 없으면 조건을 재설정하시고 다시 검색해주세요.</p>
             </div>
         </>
     );

@@ -12,7 +12,7 @@ export default function Select() {
 
         <ul className='list'>
             <li>
-                <Link to="/menu">
+                <Link to="/way">
                     <img className='ico' src="./media/ico_pizza.png"></img>
                     <p className='title'>피자 주문 연습하기</p>
                 </Link>
