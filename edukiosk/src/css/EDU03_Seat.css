@@ -1,0 +1,35 @@
+.txt-right {
+    display: flex;
+    align-items: center;
+}
+
+.busseat {
+    flex-shrink: 0;
+
+}
+
+.seatnum span {
+    margin: 5px;
+}
+.seatnum span:nth-child(2) {
+    margin-right: 50px;
+}
+.result{
+    text-align: center;
+}
+#seatbut{
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 50px;
+    background-color: var(--red);
+    color: white;
+}
+.txt-explanation{
+    background-color: #F1F4F6;
+    text-align: center;
+}
+#help{
+    background-color: gray;
+    color: white;
+    
+}
