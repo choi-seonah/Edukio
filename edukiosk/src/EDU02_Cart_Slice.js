@@ -45,6 +45,9 @@ const cartSlice = createSlice({
     clearCart: state => {
       state.cartList = [];
       state.totalPrice = 0;
+      state.couponSuccess = false;
+      state.couponMessage = "";
+      state.couponError = null;
     },
     addToCart: (state, action) => {
       // pizza.name랑 action.payload 같음
