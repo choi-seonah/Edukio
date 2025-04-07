@@ -39,6 +39,7 @@ const cartSlice = createSlice({
     ],
     couponSuccess: false,
     couponMessage: "",
+    couponError: null
   },
 
   reducers: {
@@ -46,8 +47,6 @@ const cartSlice = createSlice({
       state.cartList = [];
       state.totalPrice = 0;
       state.couponSuccess = false;
-      state.couponMessage = "";
-      state.couponError = null;
     },
     addToCart: (state, action) => {
       // pizza.name랑 action.payload 같음
@@ -112,15 +111,16 @@ const cartSlice = createSlice({
       const coupon = state.couponList.find(c => c.id === action.payload);
 
       if (coupon) {
-        state.totalPrice = state.totalPrice * 0.8; // 20% 할인만 적용!
-        state.couponError = null;
-        state.couponSuccess = true;
+        state.totalPrice = state.totalPrice * 0.8;        // 총 결제 금액 할인
+        state.couponSuccess = true;                       // 성공 여부 저장
         state.couponMessage = "✅ 쿠폰이 적용되어 20% 할인이 되었습니다!";
+        state.couponError = null;                         // 에러는 없으니까 null로
       } else {
-        state.couponError = "존재하지 않는 쿠폰입니다.";
         state.couponSuccess = false;
-        state.couponMessage = "";
+        state.couponError = "존재하지 않는 쿠폰입니다.";
+        state.couponMessage = "";                         // 메시지 비우기
       }
+
     }
 
   },
