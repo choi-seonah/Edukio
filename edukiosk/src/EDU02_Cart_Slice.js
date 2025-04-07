@@ -124,6 +124,7 @@ const cartSlice = createSlice({
     },
     clearInfo: (state) => {
       state.couponMessage = null;
+      state.couponError = null;
     },
 
   },
