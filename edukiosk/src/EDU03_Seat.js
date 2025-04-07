@@ -31,6 +31,8 @@ export default function Seat() {
             blank.push(<span
                 key={seatId}
                 onClick={(e) => {
+                    if(isBlocked){return};
+                    
                     if (isSeletedId) {
                         setSelectedSeat(selectedSeat.filter((id) => id !== seatId));
                         setCount(count - 1);
