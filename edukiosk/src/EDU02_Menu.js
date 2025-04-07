@@ -36,7 +36,9 @@ export default function Menu() {
           </li>
         ))}
       </ul>
+      
     </div>
+
 
     {/* 장바구니 */}
     <div id='cart'>
