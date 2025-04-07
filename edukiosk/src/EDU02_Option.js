@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCartSide } from "./EDU02_Cart_Slice";
 import { useState } from "react";
 
-export default function Option({ onClose }) {
+export default function Option({ onClose,onSelect }) {
   const dispatch = useDispatch();
   const pizzaoptionList = useSelector(state => state.cart.pizzaoptionList);
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -23,6 +23,7 @@ export default function Option({ onClose }) {
       dispatch(addToCartSide(optionName));
     });
     onClose(); // 창 닫기
+    onSelect();
   };
 
   return (
