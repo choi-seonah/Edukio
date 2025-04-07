@@ -27,7 +27,9 @@ export default function Menu() {
       <ul className="pizza-list">
         {pizzamenuList.map(pizza => (
           <li onClick={() => handlePizzaClick(pizza.name)}>
-            <img src={pizza.src} width="100" height="50" />
+            <label style={{ cursor: "pointer" }}>
+              <img src={pizza.src} width="100" height="50" />
+            </label>
             <p>{pizza.name}</p>
             <p>{pizza.price}원</p>
           </li>
