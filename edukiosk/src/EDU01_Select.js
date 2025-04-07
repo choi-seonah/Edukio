@@ -4,13 +4,13 @@ import "./css/EDU01_Select.css";
 export default function Select() {
     return (
     <>
-    <div id='select'>
+    <div id='select' className='inner'>
         <div className='title-wrap'>
             <h1 className='logo'>EDUKIO</h1>
             <h1 className='title'>키오스크 연습하기</h1>
         </div>
 
-        <ul className='list'>
+        <ul className='select-list'>
             <li>
                 <Link to="/way">
                     <img className='ico' src="./media/ico_pizza.png"></img>
@@ -24,6 +24,8 @@ export default function Select() {
                 </Link>
             </li>
         </ul>
+
+        <a className='flaticon' href="https://www.flaticon.com/kr/free-icons/" title="반합 아이콘">반합 아이콘 제작자: Aranagraphics - Flaticon</a>
     </div>
     </>
     );
