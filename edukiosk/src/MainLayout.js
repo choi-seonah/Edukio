@@ -4,9 +4,10 @@ export default function MainLayout(){
    
     return(
         <>
-        <Home />
-        <Outlet />
-    
+        <section id='main-wrap'>
+            <Home />
+            <Outlet />
+        </section>
         </>
     );
 }
