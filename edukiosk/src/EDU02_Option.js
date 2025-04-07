@@ -1,33 +1,61 @@
-import { useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCartSide } from "./mainSlice";
+import { useState } from "react";
 
-export default function Option() {
-  const navigate = useNavigate();
-  const { pizzaID } = useParams();
-  const pizzaMenuList = useSelector((state) =>
-    state.pizza.pizzaMenuList.find((p) => p.id === Number(pizzaID))
-  );
-  const pizzaOptionList = useSelector((state) => state.option.pizzaOptionList);
-  const selectedOptions = useSelector((state) => state.option.selectedOptions);
+export default function Option({ onClose }) {
+  const dispatch = useDispatch();
+  const pizzaoptionList = useSelector(state => state.main.pizzaoptionList);
+  const [selectedOptions, setSelectedOptions] = useState([]);
+
+  const handleOptionClick = (optionName) => {
+    dispatch(addToCartSide(optionName));
+    setSelectedOptions([...selectedOptions, optionName]);
+  };
+
+  const handleDone = () => {
+    // 옵션 선택 완료 → 창 닫기
+    onClose();
+  };
 
   return (
-    <div>
-      <h3>추가 옵션을 선택하세요.</h3>
-      <ul>
-        {pizzaOptionList.map((option) => (
-          <li key={option.id}>
-            <input type="checkbox" value={option.id} onChange={optionChange} />
-            <label for={option.id}>
-              {option.name} + {option.price}원
-            </label>
+    <div
+      style={{
+        width: "300px", // ✅ 크기 줄임
+        padding: "20px",
+        border: "2px solid #888",
+        borderRadius: "8px",
+        background: "#fff",
+        boxShadow: "0 0 10px rgba(0,0,0,0.1)",
+        position: "absolute",
+        top: "20%",
+        left: "50%",
+        transform: "translateX(-50%)",
+        zIndex: 1000,
+      }}
+    >
+      <h3>옵션 선택</h3>
+      <ul style={{ listStyle: "none", padding: 0 }}>
+        {pizzaoptionList.map(option => (
+          <li
+            key={option.id}
+            onClick={() => handleOptionClick(option.name)}
+            style={{
+              border: "1px solid #ccc",
+              padding: "5px",
+              marginBottom: "8px",
+              cursor: "pointer",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              borderRadius: "6px",
+            }}
+          >
+            <span>{option.name}</span>
+            <span>{option.price}원</span>
           </li>
         ))}
       </ul>
-
-      <div>
-        <button onClick={optionChange}> 장바구니 추가</button>
-        <button onClick={() => navigate("/menu")}>취소하기</button>
-      </div>
+      <button onClick={handleDone}>선택 완료</button>
     </div>
   );
 }
