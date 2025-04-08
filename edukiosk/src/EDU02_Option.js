@@ -34,16 +34,6 @@ export default function Option({ onClose,onSelect, pizzaName}) {
             <ul className='option-list'>
                 {pizzaoptionList.map(option => (
                 <li key={option.id}>
-                    <label>
-                        <input
-                            type="checkbox"
-                            checked={selectedOptions.includes(option.name)}
-                            onChange={() => handleCheckboxChange(option.name)}
-                        />
-                        {option.name}
-						<span className='option-price'>+{option.price.toLocaleString()}원</span>
-                    </label>
-
 					<label>
 						<input
 							type="checkbox"
