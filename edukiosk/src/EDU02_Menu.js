@@ -80,20 +80,20 @@ export default function Menu() {
                   )}
                 </div>
                 <div className="item-count">
-                  <button
+                  <button className="decrease "
                     onClick={() => {
                       if (product.amount > 1) {
                         dispatch(amountCount({ uniqueId: product.uniqueId, amount: product.amount - 1 }));
                       }
                     }}
                   >-</button>
-                  <input type="number" min={1} value={product.amount} onChange={e => {
+                  <input type="text" min={1} value={product.amount} onChange={e => {
                     const newValue = Number(e.target.value)
                     if (newValue >= 1) {
                       dispatch(amountCount({ uniqueId: product.uniqueId, amount: newValue }))
                     }
                   }} />
-                  <button
+                  <button className="increase "
                     onClick={() => {
                       dispatch(amountCount({ uniqueId: product.uniqueId, amount: product.amount + 1 }));
                     }}
