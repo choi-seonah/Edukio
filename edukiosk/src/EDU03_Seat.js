@@ -1,8 +1,12 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Seat() {
     const navigate = useNavigate();
+    const location = useLocation();
+    const selectedBus = location.state?.selectedBus;
+
+
     const [count, setCount] = useState(0);
     const [selectedSeat, setSelectedSeat] = useState([]);
     const blankSeat = [];
@@ -65,7 +69,7 @@ export default function Seat() {
 					<button className='submit-btn'
 					onClick={(e) => {
 						navigate("/busselect/busdes/buscheck/busseat/buspay"
-							, { state: { payCount: count } })
+							, { state: { payCount: count , selectedBus: selectedBus} })
 					}}>최종 결제 창으로 이동</button>
 				</div>
 				<div className='help-wrap'>

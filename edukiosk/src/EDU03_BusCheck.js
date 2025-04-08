@@ -11,7 +11,10 @@ export default function BusCheck() {
         <div id='bus-check' className="inner">
             <form onSubmit={(e) => {
                 e.preventDefault();
-                navigate("/busselect/busdes/buscheck/busseat");
+				const formData = new FormData(e.target);
+				const selectedBusId = formData.get("busradio");
+				const selectedBus = buses.find((bus) => bus.id === selectedBusId);
+                navigate("/busselect/busdes/buscheck/busseat",{state:{selectedBus:selectedBus}});
             }}>
 				<h1 className='page-title'>선택하신 버스 정보</h1>
                 {buses.length > 0 ? (

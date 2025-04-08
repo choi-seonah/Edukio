@@ -3,28 +3,29 @@ import payImage from "./media/payment.jpg";
 import { useState } from "react";
 
 export default function BusPay() {
-    const location = useLocation();
-    const navigate = useNavigate();
-    const count = location.state?.payCount || [];
-    const ticketPrice = 20000;
-    const [passengers, setPassengers] = useState({ 아동: 0, 청소년: 0, 성인: 0, 노인: 0 });
-    const add = (type) => {
-        const total = Object.values(passengers).reduce((a, b) => a + b, 0);
-        if (total >= count) return;
+	const location = useLocation();
+	const navigate = useNavigate();
+	const count = location.state?.payCount || [];
+	const selectedBus = location.state?.selectedBus;
+	const ticketPrice = 20000;
+	const [passengers, setPassengers] = useState({ 아동: 0, 청소년: 0, 성인: 0, 노인: 0 });
+	const add = (type) => {
+		const total = Object.values(passengers).reduce((a, b) => a + b, 0);
+		if (total >= count) return;
 
-        setPassengers((p) => ({ ...p, [type]: p[type] + 1 }));
-    };
+		setPassengers((p) => ({ ...p, [type]: p[type] + 1 }));
+	};
 
-    const totalPrice =
-        passengers.아동 * ticketPrice * 0.5 +
-        passengers.청소년 * ticketPrice * 0.7 +
-        passengers.성인 * ticketPrice +
-        passengers.노인 * ticketPrice * 0.5;
+	const totalPrice =
+		passengers.아동 * ticketPrice * 0.5 +
+		passengers.청소년 * ticketPrice * 0.7 +
+		passengers.성인 * ticketPrice +
+		passengers.노인 * ticketPrice * 0.5;
 
 
-    return (
-        <>
-            <div id='bus-pay' className="inner">
+	return (
+		<>
+			<div id='bus-pay' className="inner">
 				<h2 className="page-title">최종 결제 창</h2>
 
 				<div className='pay-info'>
@@ -47,6 +48,16 @@ export default function BusPay() {
 							add("노인");
 						}}>노인</button>
 					</div>
+					<div className="bus-info">
+						<dl>
+							<dt>선택한 버스 정보</dt>
+							<dd>버스 ID: {selectedBus?.id}</dd>
+							<dd>출발지: {selectedBus?.start}</dd>
+							<dd>도착지: {selectedBus?.des}</dd>
+							<dd>출발일: {selectedBus?.date}</dd>
+							<dd>출발시간: {selectedBus?.time}</dd>
+						</dl>
+					</div>
 					<div className='info-box'>
 						<dl>
 							<dt>선택좌석</dt>
@@ -58,14 +69,17 @@ export default function BusPay() {
 							</dd>
 						</dl>
 						<div className='noti'>
-							- 버스 티켓의 기본 가격은 20,000원입니다.<br/>
-							- 아동, 노인: 50% 할인<br/>
+							- 버스 티켓의 기본 가격은 20,000원입니다.<br />
+							- 아동, 노인: 50% 할인<br />
 							- 청소년: 30% 할인
+
+
 						</div>
 					</div>
 				</div>
-               
+
 				<div className='total-wrap'>
+
 					<h2 className='total-price'>최종금액 <span>{totalPrice}원</span></h2>
 
 					<div className='btn-wrap'>
@@ -79,10 +93,10 @@ export default function BusPay() {
 						}}>결제하기</button>
 					</div>
 				</div>
-  
+
 				<div className='help-wrap'>
 					<p className="help-title">도움말</p>
-					
+
 					<div className="des-help">
 						<p>연령대에 따른 추가적인 할인이 적용되기 때문에 입력하신 좌석과 일치하게 눌러주시면 됩니다.</p>
 						<p>아동 2명에 성인 1명인 경우, 아동 버튼을 2번 누르고 성인 버튼을 1번 눌러주세요.</p>
@@ -90,7 +104,7 @@ export default function BusPay() {
 						<p>입력이 완료되면 결제하기 버튼을 눌러서 사진과 같이 카드를 넣어주시면 됩니다.</p>
 					</div>
 				</div>
-            </div>
-        </>
-    );
+			</div>
+		</>
+	);
 }
