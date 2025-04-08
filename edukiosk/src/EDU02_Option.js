@@ -40,7 +40,7 @@ export default function Option({ onClose,onSelect, pizzaName}) {
                             checked={selectedOptions.includes(option.name)}
                             onChange={() => handleCheckboxChange(option.name)}
                         />
-                        {option.name}<span className='option-price'>+{option.price}원</span>
+                        {option.name}<span className='option-price'>+{option.price.toLocaleString()}원</span>
                     </label>
                 </li>
                 ))}

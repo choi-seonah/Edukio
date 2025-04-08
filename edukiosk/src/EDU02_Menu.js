@@ -39,7 +39,7 @@ export default function Menu() {
                 <img src={pizza.src} alt={pizza.name} />
               </label>
               <p className="product-name">{pizza.name}</p>
-              <p className="product-price">{pizza.price}원</p>
+              <p className="product-price">{pizza.price.toLocaleString()}원</p>
             </li>
           ))}
         </ul>
@@ -72,7 +72,7 @@ export default function Menu() {
                     <ul className="menu-option">
                       {product.options.map(opt => (
                         <li key={opt.name}>
-                          + {opt.name} ({opt.price}원)
+                          + {opt.name} ({opt.price.toLocaleString()}원)
                         </li>
                       ))}
                     </ul>
@@ -84,7 +84,7 @@ export default function Menu() {
                     if (newValue >= 1){
                     dispatch(amountCount({ uniqueId: product.uniqueId, amount: newValue }))}}} />
                 </div>
-                <p className="item-price">{(product.price + (product.options?.reduce((a, c) => a + c.price, 0) || 0)) * product.amount}원</p>
+                <p className="item-price">{((product.price + (product.options?.reduce((a, c) => a + c.price, 0) || 0)) * product.amount).toLocaleString()}원</p>
                 <div className="item-remove">
                   <button onClick={() => dispatch(removeProduct(product.uniqueId))}></button>
                 </div>
