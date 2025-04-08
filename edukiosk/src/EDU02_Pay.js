@@ -1,6 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import payImage from "./media/payment.jpg";
-import { Route, Routes } from "react-router-dom";
 
 function Pizzapayment() {
     const pizzapaynavigate = useNavigate();
