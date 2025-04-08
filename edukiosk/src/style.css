@@ -552,13 +552,19 @@ header button {
 }
 
 #popup-coupon-input .popup-content {
-	width: 350px;
+	width: 500px;
 	text-align: center;
+	padding-top: 50px;
 }
 
 #popup-coupon-input .title {
-	font-size: 22px;
-	font-weight: 600;
+	font-size: 28px;
+	font-weight: 700;
+	margin-bottom: 20px;
+}
+
+#popup-coupon-input .sub-title {
+	font-size: 16px;
 	margin-bottom: 25px;
 }
 
@@ -571,6 +577,12 @@ header button {
 #popup-coupon-input .btn-wrap > * {
 	font-size: 20px;
 	height: 50px;
+}
+
+#popup-coupon-input .barcode-img {
+	width: 280px;
+	margin-top: 25px;
+	margin-bottom: 40px;
 }
 
 /* EDU02_Pay */
