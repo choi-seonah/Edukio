@@ -1,7 +1,24 @@
 import { useNavigate } from "react-router-dom";
+import React from "react";
+import { useEffect, useState } from "react";
 
 function Pizzapayment() {
-    const pizzapaynavigate = useNavigate();
+    const navigate = useNavigate();
+    const [countsecond, setcountsecond]=useState(10);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setcountsecond((prev) => prev - 1);
+          }, 1000);
+
+        const timeout = setTimeout(() => {
+          navigate("/");
+        }, 10000); // 10초 뒤 메인화면으로 이동
+    
+        return () => {
+            clearInterval(interval);
+            clearTimeout(timeout);} // 타이머 정리
+      }, [navigate]);
+      
 
     return (
         <>
@@ -10,6 +27,9 @@ function Pizzapayment() {
             <img className='pay-img' src="../media/pay.png"/>
             <p className='noti-title'>카드를 삽입해주세요</p>
             <p className='noti-txt'>결제가 끝날때까지 카드를 뽑지 마세요.</p>
+            <p className="noti-txt">결제가 끝나면 홈 화면으로 돌아갑니다.</p>
+            <p>{countsecond}초 후 메인화면으로 이동합니다.</p>
+            
             {/* <button onClick={(e) => { pizzapaynavigate("/pizzapaycomplete") }}>삽입완료</button> */}
         </div>
         </>
