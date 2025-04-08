@@ -3,7 +3,7 @@ import { amountCount, clearCart, removeProduct } from "./EDU02_Cart_Slice";
 import Option from "./EDU02_Option";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "./css/EDU02_Menu.css";
+// import "./css/EDU02_Menu.css";
 
 export default function Menu() {
   const dispatch = useDispatch();
@@ -80,7 +80,7 @@ export default function Menu() {
                   )}
                 </div>
                 <div className="item-count">
-                  <button className="decrease "
+                  <button className="decrease"
                     onClick={() => {
                       if (product.amount > 1) {
                         dispatch(amountCount({ uniqueId: product.uniqueId, amount: product.amount - 1 }));
@@ -93,7 +93,7 @@ export default function Menu() {
                       dispatch(amountCount({ uniqueId: product.uniqueId, amount: newValue }))
                     }
                   }} />
-                  <button className="increase "
+                  <button className="increase"
                     onClick={() => {
                       dispatch(amountCount({ uniqueId: product.uniqueId, amount: product.amount + 1 }));
                     }}
