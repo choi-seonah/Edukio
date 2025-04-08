@@ -61,8 +61,8 @@ const cartSlice = createSlice({
         state.cartList.push(newProduct);
       }
     },
-
-    addToCartSide: (state, action) => {
+                
+    addToCartSide: (state, action) => { //여기서 피자 옵션에 네임으로 찾음
       const option = state.pizzaoptionList.find(e => e.name === action.payload);
       if (!option) return;
 
@@ -72,9 +72,9 @@ const cartSlice = createSlice({
       if (!lastPizza.options) {
         lastPizza.options = [];
       }
-
+                                            //여기도 이름
       const exist = lastPizza.options.find(o => o.name === option.name);
-      if (!exist) {
+      if (!exist) {                 //여기도 이름
         lastPizza.options.push({ name: option.name, price: option.price });
       }
     },
@@ -96,7 +96,7 @@ const cartSlice = createSlice({
     },
 
     removeProduct: (state, action) => {
-      const newCartList = state.cartList.filter(e => e.name !== action.payload);
+      const newCartList = state.cartList.filter(e => e.uniqueId !== action.payload);
       state.cartList = newCartList;
       state.couponMessage = null;
       state.couponError = null;
