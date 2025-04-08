@@ -18,4 +18,17 @@ const pizzaoptionList = [
     { id: 7, name: "치즈 크러스트 변경", price: 2000, amount: 1 },
 ]
 
-export default { pizzamenuList, pizzaoptionList };
+const couponList = [
+    { id: "AZ58461" },
+    { id: "AD88123" },
+    { id: "AW45012" },
+    { id: "AH57033" },
+    { id: "AT77152" },
+    { id: "BT77045" },
+    { id: "BW99442" },
+    { id: "BS01523" },
+    { id: "BQ52348" },
+    { id: "BN12147" },
+]
+
+export default { pizzamenuList, pizzaoptionList, couponList };
