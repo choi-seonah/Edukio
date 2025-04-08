@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { setTotalPrice, findCoupon, removeProduct } from "./EDU02_Cart_Slice";
-import "./css/EDU02_Check_Out.css";
 
 function calcItemPrice(product) {
 	const optionTotal = product.options?.reduce((sum, opt) => sum + opt.price, 0) || 0;
@@ -45,20 +44,20 @@ export default function Checkout() {
 								<div className='order-menu'>
 									<p className='item-name'>{item.name}</p>
 									<p className='item-amount'>{item.amount}</p>
-									<p className='item-price'>{item.price}원</p>
+									<p className='item-price'>{item.price.toLocaleString()}원</p>
 								</div>
 								{item.options && item.options.length > 0 && (
 									<ul className='option-list'>
 										{item.options.map((opt, i) => (
 											<li key={i}>
 												<p>- {opt.name}</p>
-												<p className='option-price'>{opt.price}원</p>
+												<p className='option-price'>{opt.price.toLocaleString()}원</p>
 											</li>
 										))}
 									</ul>
 								)}
+								<p className='item-total'>상품금액 <span>{calcItemPrice(item).toLocaleString()}원</span></p>
 								<div className="item-remove">
-									<p>상품금액: {calcItemPrice(item)}원</p>
 									<button className='submit-btn' onClick={() => dispatch(removeProduct(item.uniqueId))}>삭제</button>
 								</div>
 							</div>
@@ -107,12 +106,16 @@ export default function Checkout() {
 				</div>
 			)}
 
-			<div className='checkhelp-wrap'>
-				<p class="checkhelpclass">도움말</p>
-				<p class="checkhelp">쿠폰을 보유중이시면 쿠폰 사용하기를 눌러주신 후 <br />
-					쿠폰번호를 입력해주시면 됩니다. <br />
-					이 후 결제하기 버튼을 눌러주시면 결제 창이 나옵니다.
-				</p>
+			<div className='help-wrap'>
+				<p className="help-title">도움말</p>
+				
+				<div className="des-help">
+					<p>
+						쿠폰을 보유중이시면 쿠폰 사용하기를 눌러주신 후 <br />
+						쿠폰번호를 입력해주시면 됩니다. <br />
+						이 후 결제하기 버튼을 눌러주시면 결제 창이 나옵니다.
+					</p>
+				</div>
 			</div>
 		</div>
 	);

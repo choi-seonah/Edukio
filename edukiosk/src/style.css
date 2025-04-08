@@ -454,7 +454,7 @@ header button {
 #checkout {
 	min-height: calc(100vh - 60px);
 	padding-top: 20px;
-	padding-bottom: 80px;
+	padding-bottom: 120px;
 	background: var(--light-gray);
 }
 
@@ -496,6 +496,21 @@ header button {
 
 #checkout .list .order-menu .item-name {
 	width: 280px;
+}
+
+#checkout .list .item-total {
+	text-align: right;
+	font-size: 18px;
+	margin-top: 10px;
+	color: var(--gray-666);
+	font-weight: 500;
+}
+
+#checkout .list .item-total span {
+	color: var(--red);
+	font-weight: 700;
+	font-size: 22px;
+	margin-left: 5px;
 }
 
 #checkout .list .option-list {
@@ -567,6 +582,9 @@ header button {
 	position: fixed;
 	bottom: 80px;
 	margin-left: -20px;
+}
+
+#checkout .cp-message-wrap p {
 	background: #fff;
 	border-top: 1px solid var(--gray-ddd);
 	padding: 10px 20px;
