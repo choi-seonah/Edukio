@@ -10,7 +10,7 @@ import Menu from "./EDU02_Menu";
 import BookingInput from "./EDU03_Input";
 import BookingPrint from "./EDU03_Print"; 
 import Pizzapayment from "./EDU02_Pay";
-import Checkout from './EDU02_Check_Out';
+import Checkout from './EDU02_Check_out';
 import Way from "./EDU02_Way";
 
 function App() {

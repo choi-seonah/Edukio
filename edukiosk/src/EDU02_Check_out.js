@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { setTotalPrice, findCoupon, removeProduct } from "./EDU02_Cart_Slice";
-import "./css/EDU02_Check_Out.css";
+import "./css/EDU02_Check_out.css";
 
 export default function Checkout() {
   const dispatch = useDispatch();
