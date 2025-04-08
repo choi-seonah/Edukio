@@ -18,18 +18,11 @@ export default function Option({ onClose,onSelect ,pizzaName}) {
   };
 
   const handleDone = () => {
-    selectedOptions.forEach(optionName => {
-      const option = pizzaoptionList.find(opt => opt.name === optionName);
-
-      // ✅ 어떤 피자에 어떤 옵션 붙일지 명확하게 전달
-      dispatch(
-        ({
-        pizzaName,
-        option
-      }));
-    });
-    onClose();
-    onSelect();
+	selectedOptions.forEach(optionName => {
+	  dispatch(addToCartSide(optionName));
+	});
+	onClose();
+	onSelect();
   };
 
   return (

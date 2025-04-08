@@ -82,12 +82,17 @@ export default function Checkout() {
 		<div id='popup-coupon-input' className='popup'>
 	        <div className='dim'></div>
 			<div className='popup-content'>
-			<h3 className='title'>쿠폰 코드 입력</h3>
+			<h3 className='title'>
+				사용하실 쿠폰의 바코드를<br></br>
+				바코드 리더기에 스캔해주세요.
+			</h3>
+			<p className='sub-title'>쿠폰의 바코드 인식이 안될 경우 쿠폰번호 입력으로 확인하세요!</p>
+			<img className='barcode-img' src='./media/ico_barcode.png'/>
 			<input className='coupon-input'
 				type="text"
 				value={couponCode}
 				onChange={(e) => setCouponCode(e.target.value)}
-				placeholder="예: AZ58461"/>
+				placeholder="쿠폰번호 입력"/>
 			<div className='btn-wrap half'>
 				<button className='submit-btn' onClick={handleApplyCoupon}>적용</button>
 				<button className='submit-btn gray' onClick={() => setShowPopup(false)}>닫기</button>
