@@ -874,7 +874,7 @@ header button {
 }
 
 #bus-check .ticket-info dl + dl {
-	margin-top: 20px;
+	margin-top: 10px;
 }
 
 #bus-check .ticket-info dl dt {
@@ -1007,6 +1007,11 @@ header button {
 #bus-pay .info-box {
 	display: flex;
 	justify-content: space-between;
+	gap: 40px;
+}
+
+#bus-pay .info-box .left {
+	flex-shrink: 0;
 }
 
 #bus-pay .info-box dl {
@@ -1014,7 +1019,7 @@ header button {
 }
 
 #bus-pay .info-box dl + dl {
-    margin-top: 10px;
+    margin-top: 25px;
 }
 
 #bus-pay .info-box dl dt {
@@ -1030,7 +1035,17 @@ header button {
 	margin-top: 3px;
 }
 
-#bus-pay .info-box .noti {
+#bus-pay .help-wrap {
+	margin-top: 20px;
+}
+
+#bus-pay .help-wrap .des-help {
+	padding: 40px 20px;
+	word-break: break-all;
+	font-size: 18px;
+}
+
+#bus-pay .noti {
 	height: fit-content;
 	background: var(--gray-eee);
 	border: 1px solid var(--gray-666);
@@ -1039,6 +1054,7 @@ header button {
 	border-radius: 5px;
 	font-size: 16px;
 	line-height: 26px;
+	margin-top: 30px;
 }
 
 #bus-pay .total-wrap {
