@@ -215,7 +215,7 @@ header button {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	height: calc(100% - 60px);
+	height: calc(100vh - 60px);
 }
 
 #select .title-wrap {
@@ -439,7 +439,7 @@ header button {
 /* EDU02_Way */
 #way {
 	text-align: center;
-	height: calc(100% - 60px);
+	height: calc(100vh - 60px);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -452,7 +452,7 @@ header button {
 
 /* EDU02_Check_out */
 #checkout {
-	min-height: calc(100% - 60px);
+	min-height: calc(100vh - 60px);
 	padding-top: 20px;
 	padding-bottom: 80px;
 	background: var(--light-gray);
@@ -468,6 +468,7 @@ header button {
 	border-radius: 10px;
 	padding: 25px;
 	background: #fff;
+	box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
 }
 
 #checkout .list > li + li {
@@ -557,7 +558,7 @@ header button {
 }
 
 #checkout .checkhelp-wrap {
-	margin-bottom: 130px;
+	margin-bottom: 100px;
 }
 
 #checkout .cp-message-wrap {
@@ -609,7 +610,7 @@ header button {
 /* EDU02_Pay */
 #pizza-pay {
 	text-align: center;
-	height: calc(100% - 60px);
+	height: calc(100vh - 60px);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -638,7 +639,7 @@ header button {
 /* EDU03_BusSelect */
 #bus-select {
 	text-align: center;
-	height: calc(100% - 60px);
+	height: calc(100vh - 60px);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -894,4 +895,164 @@ header button {
 
 #seat .help-wrap {
 	margin-top: 50px;
+}
+
+/* EDU03_Pay */
+#bus-pay {
+	min-height: calc(100vh - 60px);
+	padding-top: 20px;
+	padding-bottom: 80px;
+	background: var(--light-gray);
+}
+
+#bus-pay .pay-info {
+	border-radius: 10px;
+	padding: 25px;
+	background: #fff;
+	box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
+	margin-top: 20px;
+}
+
+#bus-pay .payage-title {
+	font-weight: 600;
+	margin-bottom: 5px;
+}
+
+#bus-pay .payage {
+	display: flex;
+	gap: 5px;
+	margin-bottom: 20px;
+}
+
+#bus-pay .payage > button {
+    background-color:#ffd3d3;
+	border:2px solid #ffacac;
+	color: #d34c4c;
+    border-radius:5px;
+    padding:0px 5px;
+    margin:5px 5px 15px 0px;
+	transition: 0.2s;
+	font-weight: 400;
+	font-size: 18px;
+}
+
+#bus-pay .payage > button:hover {
+	background: #fff;
+	border-color: #d85b5b;
+	font-weight: 500;
+}
+
+#bus-pay .info-box {
+	display: flex;
+	justify-content: space-between;
+}
+
+#bus-pay .info-box dl {
+	display: flex;
+}
+
+#bus-pay .info-box dl + dl {
+    margin-top: 10px;
+}
+
+#bus-pay .info-box dl dt {
+    width: 120px;
+    color: var(--gray-666);
+}
+
+#bus-pay .info-box dl dd {
+	font-weight: 600;
+}
+
+#bus-pay .info-box dl dd p + p {
+	margin-top: 3px;
+}
+
+#bus-pay .info-box .noti {
+	height: fit-content;
+	background: var(--gray-eee);
+	border: 1px solid var(--gray-666);
+	padding: 10px;
+	box-sizing: border-box;
+	border-radius: 5px;
+	font-size: 16px;
+	line-height: 26px;
+}
+
+#bus-pay .total-wrap {
+	max-width: 768px;
+	width: 100%;
+	height: 80px;
+	position: fixed;
+	bottom: 0;
+	background: var(--gray-eee);
+	padding: 0 20px;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: space-between;
+	margin-left: -20px;
+}
+
+#bus-pay .total-wrap .total-price {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 22px;
+}
+
+#bus-pay .total-wrap .total-price span {
+	font-size: 28px;
+	font-weight: 700;
+	color: var(--red);
+}
+
+/* EDU03_Input */
+#bus-input {
+	min-height: calc(100vh - 60px);
+	padding-top: 20px;
+	padding-bottom: 80px;
+	background: var(--light-gray);
+}
+
+#bus-input .page-title {
+	text-align: center;
+}
+
+#bus-input .white-box {
+	border-radius: 10px;
+	padding: 40px;
+	box-sizing: border-box;
+	background: #fff;
+	box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);}
+
+#bus-input .input-box {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	z-index: 10;
+	margin-top: 30px;
+}
+
+#bus-input .input-box .inputnum {
+	width: 100%;
+	height: 50px;
+    border: 1px solid var(--gray-ccc);
+    border-radius: 5px;
+    padding: 3px 10px;
+    box-sizing: border-box;
+}
+
+#bus-input .input-box .submit-btn {
+	flex-shrink: 0;
+	height: 50px;
+	font-size: 26px;
+}
+
+/* EDU03_Print */
+#print {
+	min-height: calc(100vh - 60px);
+	padding-top: 20px;
+	padding-bottom: 80px;
+	background: var(--light-gray);
 }
