@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
@@ -96,7 +95,7 @@ const cartSlice = createSlice({
     },
 
     removeProduct: (state, action) => {
-      const newCartList = state.cartList.filter(e => e.name !== action.payload);
+      const newCartList = state.cartList.filter(e => e.uniqueId !== action.payload);
       state.cartList = newCartList;
       state.couponMessage = null;
       state.couponError = null;

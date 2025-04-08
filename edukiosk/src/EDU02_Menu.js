@@ -66,7 +66,7 @@ export default function Menu() {
           </ul>
           <ul className="cart-list">
             {cartList.map(product => (
-              <li key={product.name}>
+              <li key={product.uniqueId}>
                 <div className="item-menu">
                   <p className="product-name">{product.name}</p>
                   {product.options && product.options.length > 0 && (
@@ -84,7 +84,7 @@ export default function Menu() {
                 </div>
                 <p className="item-price">{(product.price + (product.options?.reduce((a, c) => a + c.price, 0) || 0)) * product.amount}원</p>
                 <div className="item-remove">
-                  <button onClick={() => dispatch(removeProduct(product.name))}></button>
+                  <button onClick={() => dispatch(removeProduct(product.uniqueId))}></button>
                 </div>
               </li>
             ))}
