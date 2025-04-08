@@ -61,22 +61,11 @@ const cartSlice = createSlice({
       }
     },
     addToCartSide: (state, action) => {
-      const option = state.pizzaoptionList.find(e => e.name === action.payload);
-      if (!option) return;
-
-      // 가장 최근에 담긴 피자 찾기
-      const lastPizza = state.cartList[state.cartList.length - 1];
-      if (!lastPizza) return;
-
-      // 옵션 배열이 없으면 생성
-      if (!lastPizza.options) {
-        lastPizza.options = [];
-      }
-
-      // 중복 방지 (원하면 지우면 됨)
-      const exist = lastPizza.options.find(o => o.name === option.name);
-      if (!exist) {
-        lastPizza.options.push({ name: option.name, price: option.price });
+      const { pizzaName, option } = action.payload;
+      const product = state.cartList.find(item => item.name === pizzaName);
+      if (product) {
+        if (!product.options) product.options = [];
+        product.options.push(option);
       }
     },
     setTotalPrice: state => {
