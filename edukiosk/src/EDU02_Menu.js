@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, amountCount, clearCart, removeProduct } from "./EDU02_Cart_Slice";
+import {  amountCount, clearCart, removeProduct } from "./EDU02_Cart_Slice";
 import Option from "./EDU02_Option";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -16,9 +16,8 @@ export default function Menu() {
   const [showCart, setShowCart] = useState(false);
 
   //  피자 클릭 시: 카트에 추가 + 옵션창 열기
-  const handlePizzaClick = pizzaName => {
-    dispatch(addToCart(pizzaName));
-    setTargetPizzaName(pizzaName); //  타겟 피자 설정
+  const handlePizzaClick = pizza => {
+    setTargetPizzaName(pizza.name); //  타겟 피자 설정
     setShowOptions(true); // 옵션창 열기
   };
 
@@ -35,7 +34,7 @@ export default function Menu() {
         <h2 className="page-title">메뉴를 선택해주세요</h2>
         <ul className="product-list">
           {pizzamenuList.map(pizza => (
-            <li key={pizza.name} onClick={() => handlePizzaClick(pizza.name)}>
+            <li key={pizza.name} onClick={() => handlePizzaClick(pizza)}>
               <label style={{ cursor: "pointer" }}>
                 <img src={pizza.src} alt={pizza.name} />
               </label>
@@ -66,7 +65,7 @@ export default function Menu() {
           </ul>
           <ul className="cart-list">
             {cartList.map(product => (
-              <li key={product.name}>
+              <li key={product.uniqueId}>
                 <div className="item-menu">
                   <p className="product-name">{product.name}</p>
                   {product.options && product.options.length > 0 && (
@@ -80,11 +79,14 @@ export default function Menu() {
                   )}
                 </div>
                 <div className="item-count">
-                  <input type="number" min={1} value={product.amount} onChange={e => dispatch(amountCount({ _name: product.name, _amount: e.target.value }))} />
+                  <input type="number" min={1} value={product.amount} onChange={e =>{ 
+                    const newValue = Number(e.target.value)
+                    if (newValue >= 1){
+                    dispatch(amountCount({ uniqueId: product.uniqueId, amount: newValue }))}}} />
                 </div>
                 <p className="item-price">{(product.price + (product.options?.reduce((a, c) => a + c.price, 0) || 0)) * product.amount}원</p>
                 <div className="item-remove">
-                  <button onClick={() => dispatch(removeProduct(product.name))}></button>
+                  <button onClick={() => dispatch(removeProduct(product.uniqueId))}></button>
                 </div>
               </li>
             ))}

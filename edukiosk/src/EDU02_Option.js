@@ -1,29 +1,29 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addToCartSide } from "./EDU02_Cart_Slice";
+import { addToCart } from "./EDU02_Cart_Slice";
 import { useState } from "react";
 
-export default function Option({ onClose,onSelect ,pizzaName}) {
+export default function Option({ onClose,onSelect, pizzaName}) {
   const dispatch = useDispatch();
   const pizzaoptionList = useSelector(state => state.cart.pizzaoptionList);
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const handleCheckboxChange = (optionName) => {
-    if (selectedOptions.includes(optionName)) {
-      // 선택 해제
-      setSelectedOptions(prev => prev.filter(name => name !== optionName));
-    } else {
-      // 선택 추가
-      setSelectedOptions(prev => [...prev, optionName]);
-    }
+    setSelectedOptions(prev =>
+      prev.includes(optionName)
+        ? prev.filter(name => name !== optionName)
+        : [...prev, optionName]
+    );
   };
-
   const handleDone = () => {
-	selectedOptions.forEach(optionName => {
-	  dispatch(addToCartSide(optionName));
-	});
-	onClose();
-	onSelect();
+    dispatch(addToCart({
+      pizzaName,             
+      optionsName: selectedOptions  
+    }));
+  
+    onClose();
+    onSelect();
   };
+  
 
   return (
     <div id='Option' className='popup'>

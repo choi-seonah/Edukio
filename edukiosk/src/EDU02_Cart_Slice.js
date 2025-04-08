@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
@@ -49,35 +48,41 @@ const cartSlice = createSlice({
       state.couponSuccess = false;
     },
     addToCart: (state, action) => {
-      const product = state.pizzamenuList.find(e => e.name === action.payload);
-      if (product) {
-        // 항상 새로운 객체로 복사 + amount 초기화
-        const newProduct = {
+      const { pizzaName, optionsName =[] } = action.payload;
+
+      const exist = state.cartList.find((item) => {
+        if (item.name !== pizzaName) { return false };
+        if (item.options.length !== optionsName.length) { return false };
+
+        const itemOptionNames = item.options.map(o => o.name).sort();
+        const newOptionNames = [...optionsName].sort();
+
+        return JSON.stringify(itemOptionNames) === JSON.stringify(newOptionNames);
+      });
+      if (exist) {
+        exist.amount += 1;
+      } else {
+        const product = state.pizzamenuList.find(e => e.name === pizzaName);
+        if (!product) { return };
+        const newItem = {
           ...product,
           amount: 1,
-          options: [], // 옵션용 배열도 초기화
-          uniqueId: Date.now() + Math.random(), // 고유 ID 생성 (중복 방지용)
+          uniqueId: Date.now() + Math.random(),
+          options: [],
         };
-        state.cartList.push(newProduct);
-      }
-    },
-                
-    addToCartSide: (state, action) => { //여기서 피자 옵션에 네임으로 찾음
-      const option = state.pizzaoptionList.find(e => e.name === action.payload);
-      if (!option) return;
+      
 
-      const lastPizza = state.cartList[state.cartList.length - 1];
-      if (!lastPizza) return;
+      optionsName.forEach(optName => {
+        const findOpt = state.pizzaoptionList.find(o => o.name === optName);
+        if (findOpt) {
+          newItem.options.push({ name: findOpt.name, price: findOpt.price });
+        }
+      });
 
-      if (!lastPizza.options) {
-        lastPizza.options = [];
-      }
-                                            //여기도 이름
-      const exist = lastPizza.options.find(o => o.name === option.name);
-      if (!exist) {                 //여기도 이름
-        lastPizza.options.push({ name: option.name, price: option.price });
-      }
-    },
+      state.cartList.push(newItem);
+    }},
+
+
 
     setTotalPrice: state => {
       let total = 0;
@@ -96,17 +101,18 @@ const cartSlice = createSlice({
     },
 
     removeProduct: (state, action) => {
-      const newCartList = state.cartList.filter(e => e.name !== action.payload);
+      const newCartList = state.cartList.filter(e => e.uniqueId !== action.payload);
       state.cartList = newCartList;
       state.couponMessage = null;
       state.couponError = null;
     },
     amountCount: (state, action) => {
       // 네임이랑 밸류값을 객체로 가져오게 된다. => 내보낼 때도 객체로(중괄호) 내보내기!!
-      const { _name, _amount } = action.payload;
-      const product = state.cartList.find(e => e.name === _name);
-      if (product) {
-        product.amount = _amount;
+      const { uniqueId, amount } = action.payload;
+      const product = state.cartList.find(e => e.uniqueId === uniqueId);
+      if (!product) return;
+      if (product && amount >= 1) {
+        product.amount = amount;
       }
     },
     findCoupon: (state, action) => {

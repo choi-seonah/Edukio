@@ -53,7 +53,7 @@ export default function Checkout() {
 					</ul>
 					)}
 					<div className="item-remove">
-						<button className='submit-btn' onClick={() => dispatch(removeProduct(item.name))}>삭제</button>
+						<button className='submit-btn' onClick={() => dispatch(removeProduct(item.uniqueId))}>삭제</button>
 					</div>
 				</div>
 			</li>
