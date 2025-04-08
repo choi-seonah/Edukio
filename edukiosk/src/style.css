@@ -188,6 +188,26 @@ header button {
 	margin-top: 15px;
 }
 
+/* help 도움말 */
+.help-wrap {
+	margin-top: 30px;
+}
+
+.help-wrap .help-title{
+    text-align:center;
+    width: 130px;
+    padding:5px;
+    background-color:gray;
+    color:white;
+	margin: 0 auto;
+}
+
+.help-wrap .des-help{
+	margin: 10px;
+    padding:5px;
+    background-color:rgb(201,201,201);
+}
+
 /* EDU01_Select */
 #select {
 	text-align: center;
@@ -637,4 +657,131 @@ header button {
 	border-radius: 10px;
 	line-height: 28px;
 	margin-bottom: 40px;
+}
+
+/* EDU03_Des_Form */
+#bus-des {
+	min-height: calc(100vh - 80px);
+	padding-top: 20px;
+	background: var(--light-gray);
+}
+
+#bus-des .busform {
+	margin-top: 20px;
+}
+
+#bus-des .busform > .box {
+	background: #fff;
+	border-radius: 10px;
+	box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+	margin-bottom: 10px;
+}
+
+#bus-des .bussquare {
+	display: flex;
+}
+
+#bus-des .bussquare > li {
+	width: 50%;
+	text-align: center;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+#bus-des .bussquare > li:first-child {
+	border-right: 1px solid var(--gray-eee);
+}
+
+#bus-des .bussquare .title {
+	color: var(--gray-999);
+}
+
+#bus-des .bussquare select {
+	width: 100%;
+	height: 120px;
+	text-align: center;
+	font-size: 28px;
+	font-weight: 600;
+}
+
+#bus-des .bussquare select:invalid {
+	color: var(--gray-ccc);
+}
+
+#bus-des .bussquare select option {
+	color: var(--black);
+}
+
+#bus-des .busdate {
+	display: flex;
+	justify-content: center;
+	padding: 20px 20px 20px 100px;
+	box-sizing: border-box;
+	position: relative;
+}
+
+#bus-des .busdate input {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	text-align: center;
+}
+
+#bus-des .busdate input::before {
+	content: '출발일';
+	position: absolute;
+	top: 50%;
+    left: calc(50% - 110px);
+	transform: translate(-50%, -50%);
+	background: url(../public/media/ico_calendar.svg) no-repeat left top;
+	background-size: 24px 24px;
+	padding-left: 27px;
+	color: var(--gray-666);
+}
+
+#bus-des .busdate input::-webkit-calendar-picker-indicator {
+    width: 100%;
+    height: 100%;
+	position: absolute;
+	opacity: 0;
+} 
+
+#bus-des .bustime {
+	display: flex;
+	justify-content: center;
+	gap: 5px;
+	padding: 15px 20px;
+	padding-left: 110px;
+	box-sizing: border-box;
+	position: relative;
+}
+
+#bus-des .bustime::before {
+	content: '출발시간';
+	position: absolute;
+	top: 50%;
+    left: calc(50% - 180px);
+	transform: translate(-50%, -50%);
+	background: url(../public/media/ico_clock.svg) no-repeat left top;
+	background-size: 24px 24px;
+	padding-left: 27px;
+	color: var(--gray-666);
+}
+
+#bus-des .bustime input {
+	width: 150px;
+	height: 100%;
+	position: relative;
+	text-align: center;
+	background: var(--light-gray);
+	padding: 5px 0;
+	box-sizing: border-box;
+	border-radius: 8px;
+}
+
+#bus-des .bustime input::-webkit-calendar-picker-indicator {
+    width: 100%;
+    height: 100%;
+	position: absolute;
+	opacity: 0;
 }
