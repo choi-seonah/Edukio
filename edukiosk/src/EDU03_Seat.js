@@ -63,7 +63,20 @@ export default function Seat() {
         <>
             <div id='seat' className="inner">
 				<h1 className='page-title'>좌석을 선택해주세요</h1>
-				<div className='seat-wrap'>{blankSeat}</div>
+				<div className='seat-help'>
+					<div className='seat-wrap'>{blankSeat}</div>
+					<div className='help-wrap'>
+					<p className="help-title">도움말</p>
+					
+					<div className="des-help">
+						원하시는 좌석을 선택해 주세요.<br/><br/>
+						이미 자리가 있는 좌석은 회색으로 표시됩니다.<br/>
+						빈자리는 흰색으로 표시됩니다.<br/>
+						현재 클릭 된 자리는 하늘색으로 표시됩니다.<br/><br/>
+						선택이 끝나시면 최종 결제창으로 이동해주세요.
+					</div>
+				</div>
+				</div>
 				<h4 className='count-seat'>{count} 좌석을 선택하셨습니다.</h4>
 				<div className='btn-wrap'>
 					<button className='submit-btn'
@@ -72,17 +85,7 @@ export default function Seat() {
 							, { state: { payCount: count , selectedBus: selectedBus} })
 					}}>최종 결제 창으로 이동</button>
 				</div>
-				<div className='help-wrap'>
-					<p className="help-title">도움말</p>
-					
-					<div className="des-help">
-						<p>원하시는 좌석을 선택해 주세요.</p>
-						<p>이미 자리가 있는 좌석은 회색 표시됩니다.</p>
-						<p>빈자리는 흰색으로 표시됩니다.</p>
-						<p>현재 클릭 된 자리는 하늘색으로 표시됩니다.</p>
-						<p>선택이 끝나시면 최종 결제창으로 이동해주세요.</p>
-					</div>
-				</div>
+
             </div>
         </>
     );
