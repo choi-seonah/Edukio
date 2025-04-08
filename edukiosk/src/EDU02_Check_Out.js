@@ -111,7 +111,7 @@ export default function Checkout() {
 				<p class="checkhelpclass">도움말</p>
 				<p class="checkhelp">쿠폰을 보유중이시면 쿠폰 사용하기를 눌러주신 후 <br />
 					쿠폰번호를 입력해주시면 됩니다. <br />
-					이 후 결제하기 버튼을 눌러주시면 결제창이 나옵니다.
+					이 후 결제하기 버튼을 눌러주시면 결제 창이 나옵니다.
 				</p>
 			</div>
 		</div>

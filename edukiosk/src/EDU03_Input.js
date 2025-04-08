@@ -21,9 +21,9 @@ export default function BookingInput() {
           alert("없는 예약번호 입니다."); 
         }
       }}>
-        <h2>예매티켓찾기</h2><hr/>
+        <h2 className='page-title'>예매티켓찾기</h2><hr/>
         <input className="inputnum" type='text' name='text' placeholder='예매번호를 입력하세요.' value={bookingNumber} onChange={(e) => setBookingNumber(e.target.value)} />
-        <button className="inputbtn" type='submit'>조회하기</button>
+        <button className="submit-btn" type='submit'>조회하기</button>
       </form><hr/>
 
       <p class="inputhelpclass">도움말</p>
