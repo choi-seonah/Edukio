@@ -49,25 +49,36 @@ const cartSlice = createSlice({
       state.couponSuccess = false;
     },
     addToCart: (state, action) => {
-      // pizza.name랑 action.payload 같음
       const product = state.pizzamenuList.find(e => e.name === action.payload);
       if (product) {
-        const exist = state.cartList.find(e => e.name === action.payload);
-        if (exist) {
-          exist.amount += 1;
-        } else {
-          state.cartList.push(product);
-        }
+        // 항상 새로운 객체로 복사 + amount 초기화
+        const newProduct = {
+          ...product,
+          amount: 1,
+          options: [], // 옵션용 배열도 초기화
+          uniqueId: Date.now() + Math.random(), // 고유 ID 생성 (중복 방지용)
+        };
+        state.cartList.push(newProduct);
       }
     },
+
     addToCartSide: (state, action) => {
-      const { pizzaName, option } = action.payload;
-      const product = state.cartList.find(item => item.name === pizzaName);
-      if (product) {
-        if (!product.options) product.options = [];
-        product.options.push(option);
+      const option = state.pizzaoptionList.find(e => e.name === action.payload);
+      if (!option) return;
+
+      const lastPizza = state.cartList[state.cartList.length - 1];
+      if (!lastPizza) return;
+
+      if (!lastPizza.options) {
+        lastPizza.options = [];
+      }
+
+      const exist = lastPizza.options.find(o => o.name === option.name);
+      if (!exist) {
+        lastPizza.options.push({ name: option.name, price: option.price });
       }
     },
+
     setTotalPrice: state => {
       let total = 0;
 
