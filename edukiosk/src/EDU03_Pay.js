@@ -48,7 +48,7 @@ export default function BusPay() {
 							add("노인");
 						}}>노인</button>
 					</div>
-					<div className="bus-info">
+					{/* <div className="bus-info">
 						<dl>
 							<dt>선택한 버스 정보</dt>
 							<dd>버스 ID: {selectedBus?.id}</dd>
@@ -57,23 +57,33 @@ export default function BusPay() {
 							<dd>출발일: {selectedBus?.date}</dd>
 							<dd>출발시간: {selectedBus?.time}</dd>
 						</dl>
-					</div>
+					</div> */}
 					<div className='info-box'>
-						<dl>
-							<dt>선택좌석</dt>
-							<dd>
-								<p>아동 {passengers.아동}</p>
-								<p>청소년 {passengers.청소년}</p>
-								<p>성인 {passengers.성인}</p>
-								<p>노인 {passengers.노인}</p>
-							</dd>
-						</dl>
+						<div>
+							<dl>
+								<dt>예매 정보</dt>
+								<dd>
+									<p>버스 ID: {selectedBus?.id}</p>
+									<p>출발지: {selectedBus?.start}</p>
+									<p>도착지: {selectedBus?.des}</p>
+									<p>출발일: {selectedBus?.date}</p>
+									<p>출발시간: {selectedBus?.time}</p>
+								</dd>
+							</dl>
+							<dl>
+								<dt>선택좌석</dt>
+								<dd>
+									<p>아동 {passengers.아동}</p>
+									<p>청소년 {passengers.청소년}</p>
+									<p>성인 {passengers.성인}</p>
+									<p>노인 {passengers.노인}</p>
+								</dd>
+							</dl>
+						</div>
 						<div className='noti'>
 							- 버스 티켓의 기본 가격은 20,000원입니다.<br />
 							- 아동, 노인: 50% 할인<br />
 							- 청소년: 30% 할인
-
-
 						</div>
 					</div>
 				</div>
