@@ -420,16 +420,41 @@ header button {
 }
 
 /* EDU02_Option */
-#Option .option-list > li + li {
-	margin-top: 7px;
-}
-#Option .option-list > li label {
+#option .option-list {
 	display: flex;
-	align-items: center;
-	gap: 8px;
+	flex-wrap: wrap;
+	gap: 10px;
 }
 
-#Option .option-list .option-price {
+#option .option-list > li {
+	width: calc((100% - 20px) / 3);
+}
+
+#option .option-list > li label {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 5px;
+	border: 1px solid var(--gray-ccc);
+	border-radius: 8px;
+	padding: 20px 10px;
+	box-sizing: border-box;
+	text-align: center;
+	font-size: 18px;
+}
+
+#option .option-list label input[type=checkbox] {
+	display: none;
+}
+
+#option .option-list label input[type=checkbox]:checked + span {
+	border-color: var(--main-color); /* 원하는 색상 */
+}
+
+#option .option-list .option-price {
 	font-weight: 500;
 	color: var(--red);
 	font-size: 20px;
@@ -1023,9 +1048,7 @@ header button {
 	font-weight: 700;
 	color: var(--red);
 }
-.bus-info{
-	font-size: 15px;
-}
+
 /* EDU03_Input */
 #bus-input {
 	min-height: calc(100vh - 60px);

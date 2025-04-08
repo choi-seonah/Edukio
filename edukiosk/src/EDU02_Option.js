@@ -26,7 +26,7 @@ export default function Option({ onClose,onSelect, pizzaName}) {
   
 
   return (
-    <div id='Option' className='popup'>
+    <div id='option' className='popup'>
         <div className='dim'></div>
         <div className='popup-content'>
             <h3 className='page-title'>옵션을 선택해주세요</h3>
@@ -40,8 +40,21 @@ export default function Option({ onClose,onSelect, pizzaName}) {
                             checked={selectedOptions.includes(option.name)}
                             onChange={() => handleCheckboxChange(option.name)}
                         />
-                        {option.name}<span className='option-price'>+{option.price.toLocaleString()}원</span>
+                        {option.name}
+						<span className='option-price'>+{option.price.toLocaleString()}원</span>
                     </label>
+
+					<label>
+						<input
+							type="checkbox"
+							checked={selectedOptions.includes(option.name)}
+							onChange={() => handleCheckboxChange(option.name)}
+						/>						
+						<span className="option-label">
+							{option.name}
+							<span className='option-price'>+{option.price.toLocaleString()}원</span>
+						</span>
+					</label>
                 </li>
                 ))}
             </ul>
