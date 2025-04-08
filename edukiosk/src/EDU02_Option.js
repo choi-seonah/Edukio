@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCartSide } from "./EDU02_Cart_Slice";
 import { useState } from "react";
 
-export default function Option({ onClose,onSelect }) {
+export default function Option({ onClose,onSelect ,pizzaName}) {
   const dispatch = useDispatch();
   const pizzaoptionList = useSelector(state => state.cart.pizzaoptionList);
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -18,11 +18,17 @@ export default function Option({ onClose,onSelect }) {
   };
 
   const handleDone = () => {
-    // 선택된 옵션들만 dispatch
     selectedOptions.forEach(optionName => {
-      dispatch(addToCartSide(optionName));
+      const option = pizzaoptionList.find(opt => opt.name === optionName);
+
+      // ✅ 어떤 피자에 어떤 옵션 붙일지 명확하게 전달
+      dispatch(
+        ({
+        pizzaName,
+        option
+      }));
     });
-    onClose(); // 창 닫기
+    onClose();
     onSelect();
   };
 
