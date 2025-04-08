@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import {  amountCount, clearCart, removeProduct } from "./EDU02_Cart_Slice";
+import { amountCount, clearCart, removeProduct } from "./EDU02_Cart_Slice";
 import Option from "./EDU02_Option";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -79,10 +79,24 @@ export default function Menu() {
                   )}
                 </div>
                 <div className="item-count">
-                  <input type="number" min={1} value={product.amount} onChange={e =>{ 
+                  <button
+                    onClick={() => {
+                      if (product.amount > 1) {
+                        dispatch(amountCount({ uniqueId: product.uniqueId, amount: product.amount - 1 }));
+                      }
+                    }}
+                  >-</button>
+                  <input type="number" min={1} value={product.amount} onChange={e => {
                     const newValue = Number(e.target.value)
-                    if (newValue >= 1){
-                    dispatch(amountCount({ uniqueId: product.uniqueId, amount: newValue }))}}} />
+                    if (newValue >= 1) {
+                      dispatch(amountCount({ uniqueId: product.uniqueId, amount: newValue }))
+                    }
+                  }} />
+                  <button
+                    onClick={() => {
+                      dispatch(amountCount({ uniqueId: product.uniqueId, amount: product.amount + 1 }));
+                    }}
+                  >+</button>
                 </div>
                 <p className="item-price">{((product.price + (product.options?.reduce((a, c) => a + c.price, 0) || 0)) * product.amount).toLocaleString()}원</p>
                 <div className="item-remove">
