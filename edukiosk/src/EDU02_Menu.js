@@ -43,15 +43,16 @@ export default function Menu() {
             </li>
           ))}
         </ul>
-        <div>
-          <p class="menuhelpclass">도움말</p>
-          <p class="menuhelp">
-            원하시는 피자 종류를 골라주신 후 <br />
-            추가로 필요하신 옵션을 클릭해 주시면 됩니다. <br />
-            선택이 끝나신 후 더 필요하신 피자가 있으시면 한 번 더 클릭해서 <br />
-            담아주시고 주문하기를 누르시면 다음 화면으로 넘어갑니다.
-          </p>
-        </div>
+		<div className='help-wrap'>
+			<p className="help-title">도움말</p>
+			
+			<div className="des-help">
+				원하시는 피자 종류를 골라주신 후 <br />
+				추가로 필요하신 옵션을 클릭해 주시면 됩니다. <br />
+				선택이 끝나신 후 더 필요하신 피자가 있으시면 한 번 더 클릭해서 <br />
+				담아주시고 주문하기를 누르시면 다음 화면으로 넘어갑니다.
+			</div>
+		</div>
       </div>
 
       {/*  장바구니는 옵션창과 분리된 상태로 조건부 렌더링 */}

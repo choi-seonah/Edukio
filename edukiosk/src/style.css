@@ -420,6 +420,10 @@ header button {
 }
 
 /* EDU02_Option */
+#option.popup .popup-content {
+	width: 600px;
+}
+
 #option .option-list {
 	display: flex;
 	flex-wrap: wrap;
@@ -429,8 +433,10 @@ header button {
 #option .option-list > li {
 	width: calc((100% - 20px) / 3);
 }
+
 #option .option-list label {
 	position: relative;
+	cursor: pointer;
 }
 
 #option .option-list label input {
