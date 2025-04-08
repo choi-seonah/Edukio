@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import "./css/EDU03_Seat.css"
 
 export default function Seat() {
     const navigate = useNavigate();
@@ -62,6 +61,13 @@ export default function Seat() {
 				<h1 className='page-title'>좌석을 선택해주세요</h1>
 				<div className='seat-wrap'>{blankSeat}</div>
 				<h4 className='count-seat'>{count} 좌석을 선택하셨습니다.</h4>
+				<div className='btn-wrap'>
+					<button className='submit-btn'
+					onClick={(e) => {
+						navigate("/busselect/busdes/buscheck/busseat/buspay"
+							, { state: { payCount: count } })
+					}}>최종 결제 창으로 이동</button>
+				</div>
 				<div className='help-wrap'>
 					<p className="help-title">도움말</p>
 					
@@ -72,14 +78,6 @@ export default function Seat() {
 						<p>현재 클릭 된 자리는 하늘색으로 표시됩니다.</p>
 						<p>선택이 끝나시면 최종 결제창으로 이동해주세요.</p>
 					</div>
-				</div>
-         
-				<div className='btn-wrap'>
-					<button className='submit-btn'
-					onClick={(e) => {
-						navigate("/busselect/busdes/buscheck/busseat/buspay"
-							, { state: { payCount: count } })
-					}}>최종 결제 창으로 이동</button>
 				</div>
             </div>
         </>
