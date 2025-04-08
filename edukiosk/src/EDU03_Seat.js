@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./css/EDU03_Seat.css"
+// import "./css/EDU03_Seat.css"
+
 export default function Seat() {
     const navigate = useNavigate();
     const [count, setCount] = useState(0);
@@ -40,18 +41,12 @@ export default function Seat() {
                     }
                 }}
                 style={{
-                    display: "inline-block",
-                    width: "50px",
-                    padding: "10px",
-                    border: "1px solid #000",
                     backgroundColor: isBlocked
-                        ? "#ccc"
+                        ? "var(--gray-ddd)"
                         : isSeletedId
-                            ? "#add8e6"
+                            ? "#c5e1f5"
                             : "#fff",
                     cursor: isBlocked ? "not-allowed" : "pointer",
-                    textAlign: "center",
-                    borderRadius: "4px",
                 }}
             >{seatId}</span>);
         }
@@ -63,39 +58,29 @@ export default function Seat() {
     }
     return (
         <>
-            <div className="">
-                <h2 style={{
-                    textAlign: "center",
-                    fontSize: "35px",
-                    fontWeight: "bold",
-                    marginBottom: "20px"
-                }}>좌석 현황</h2>
-
-                <div className="txt-right">
-                    <div>{blankSeat}</div>
-                    <div className="txt-explanation">
-                        <div className="help-label">도움말</div> 
-
-                        <p>원하시는 좌석을 선택해 주세요.</p>
-                        <p>이미 자리가 있는 좌석은 회색 표시됩니다.</p>
-                        <p>빈자리는 흰색으로 표시됩니다.</p>
-                        <p>현재 클릭 된 자리는 하늘색으로 표시됩니다.</p>
-                        <p>선택이 끝나시면 최종 결제창으로 이동해주세요.</p>
-                    </div>
-
-                </div>
-
-
-
-
-                <div className="result">
-                    <h4>{count} 좌석을 선택하셨습니다.</h4>
-                    <button id="seatbut"
-                        onClick={(e) => {
-                            navigate("/busselect/busdes/buscheck/busseat/buspay"
-                                , { state: { payCount: count } })
-                        }}>최종 결제 창으로 이동</button>
-                </div>
+            <div id='seat' className="inner">
+				<h1 className='page-title'>좌석을 선택해주세요</h1>
+				<div className='seat-wrap'>{blankSeat}</div>
+				<h4 className='count-seat'>{count} 좌석을 선택하셨습니다.</h4>
+				<div className='help-wrap'>
+					<p className="help-title">도움말</p>
+					
+					<div className="des-help">
+						<p>원하시는 좌석을 선택해 주세요.</p>
+						<p>이미 자리가 있는 좌석은 회색 표시됩니다.</p>
+						<p>빈자리는 흰색으로 표시됩니다.</p>
+						<p>현재 클릭 된 자리는 하늘색으로 표시됩니다.</p>
+						<p>선택이 끝나시면 최종 결제창으로 이동해주세요.</p>
+					</div>
+				</div>
+         
+				<div className='btn-wrap'>
+					<button className='submit-btn'
+					onClick={(e) => {
+						navigate("/busselect/busdes/buscheck/busseat/buspay"
+							, { state: { payCount: count } })
+					}}>최종 결제 창으로 이동</button>
+				</div>
             </div>
         </>
     );

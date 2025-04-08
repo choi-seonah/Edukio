@@ -12,7 +12,7 @@
 
 #main-wrap {
 	max-width: 768px;
-	height: 100vh;
+	height: calc(100vh - 60px);
 	margin: 0 auto;
 	overflow-x: hidden;
 	overflow-y: auto;
@@ -838,4 +838,60 @@ header button {
 #bus-check .no-date {
 	text-align: center;
 	margin-top: 30vh;
+}
+
+/* EDU03_Seat */
+#seat {
+	padding-top: 20px;
+	padding-bottom: 40px;
+}
+
+#seat .page-title {
+	text-align: center;
+}
+
+#seat .seat-wrap {
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+#seat .seat-wrap .seatnum {
+	display: flex;
+	justify-content: center;
+	gap: 5px;
+	margin-bottom: 5px;
+}
+
+#seat .seat-wrap .seatnum span {
+	display: block;
+	width: 50px;
+	border: 1px solid var(--gray-ccc);
+	padding: 10px;
+	border-radius: 6px;
+	text-align: center;
+}
+
+#seat .seat-wrap .seatnum span:nth-child(2) {
+	margin-right: 50px;
+}
+
+#seat .count-seat {
+	padding: 10px 20px;
+	box-sizing: border-box;
+	margin: 0 auto;
+	width: fit-content;
+	background: var(--gray-eee);
+	text-align: center;
+	font-weight: 600;
+	border-radius: 8px;
+	margin-bottom: 20px;
+	color: #1b6d8d;
+}
+
+#seat .btn-wrap {
+	margin-top: 40px;
+}
+
+#seat .help-wrap {
+	margin-top: 50px;
 }
