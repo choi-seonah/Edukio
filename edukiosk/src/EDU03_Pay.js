@@ -51,18 +51,18 @@ export default function BusPay() {
 								}}>노인</button>
 							</div>
 							<dl>
-								<dt>예매 정보</dt>
+								<dt>예매정보</dt>
 								<dd>
 									<p>버스 ID: {selectedBus?.id}</p>
 									<p>출발지: {selectedBus?.start}</p>
 									<p>도착지: {selectedBus?.des}</p>
 									<p>출발일: {selectedBus?.date}</p>
 									<p>출발시간: {selectedBus?.time}</p>
-									<p>버스 좌석: {selectedSeat.sort().join("/ ")}</p>
+									<p>좌석: {selectedSeat.sort().join(" / ")}</p>
 								</dd>
 							</dl>
 							<dl>
-								<dt>선택좌석</dt>
+								<dt>탑승인원</dt>
 								<dd>
 									<p>아동 {passengers.아동}</p>
 									<p>청소년 {passengers.청소년}</p>
