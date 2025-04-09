@@ -917,7 +917,6 @@ header button {
 /* EDU03_Seat */
 #seat {
 	padding-top: 20px;
-	padding-bottom: 40px;
 }
 
 #seat .page-title {
@@ -1159,6 +1158,32 @@ header button {
 #print {
 	min-height: calc(100vh - 60px);
 	padding-top: 20px;
-	padding-bottom: 80px;
 	background: var(--light-gray);
+}
+
+#print .info-box {
+	border-radius: 10px;
+	padding: 40px;
+	box-sizing: border-box;
+	background: #fff;
+	box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
+	margin-bottom: 30px;
+	margin-top: 20px;
+}
+
+#print .info-box dl {
+	display: flex;
+}
+
+#print .info-box dl + dl {
+    margin-top: 20px;
+}
+
+#print .info-box dl dt {
+    width: 100px;
+    color: var(--gray-666);
+}
+
+#print .info-box dl dd {
+	font-weight: 600;
 }
