@@ -27,7 +27,7 @@ export default function Seat() {
     for (let k = 0; k < 10; k++) {
         const blank = [];
         for (let i = 0; i < 4; i++) {
-            const seatId = `${k + 1}-${i + 1} `;
+            const seatId = `${k + 1}-${i + 1}`;
             const isSeletedId = selectedSeat.includes(seatId);
             const isBlocked = blockedSeats.includes(seatId);
             blank.push(<span

@@ -3,17 +3,27 @@ import { useNavigate } from 'react-router-dom';
 
 export default function BookingPrint() {
 
-      const location = useLocation()
-      const selectedTicket = location.state;
-      const navigate = useNavigate();
+	const location = useLocation()
+	const selectedTicket = location.state;
+	const navigate = useNavigate();
 
+	const seats = [];
 
-    return (
-      <>
-    	<div id='print' className="inner">
-			<h1 className='page-title'>예매티켓찾기</h1>
+	for (let row = 1; row <= 10; row++) {
+		for (let col = 1; col <= 4; col++) {
+			seats.push(`${row}-${col}`);
+		}
+	}
 
-			<div className="info-box">					
+	const randomIndex = Math.floor(Math.random() * seats.length);
+	const randomSeat = seats[randomIndex];
+
+	return (
+		<>
+			<div id='print' className="inner">
+				<h1 className='page-title'>예매티켓찾기</h1>
+
+				<div className="info-box">
 					<dl>
 						<dt>예매번호</dt>
 						<dd>{selectedTicket.id}</dd>
@@ -34,11 +44,15 @@ export default function BookingPrint() {
 						<dt>출발시간</dt>
 						<dd>{selectedTicket.time}</dd>
 					</dl>
+					<dl>
+						<dt>좌석번호</dt>
+						<dd>{randomSeat}</dd>
+					</dl>
 				</div>
 				<div className="btn-wrap">
 					<button className="submit-btn" onClick={(e) => {
 						if (window.confirm("티켓을 출력하시겠습니까?")) {
-							navigate("/"); 
+							navigate("/");
 						}
 					}}>출력하기</button>
 				</div>
@@ -51,7 +65,7 @@ export default function BookingPrint() {
 						<p>버튼을 누르고 새 창에서 확인을 누르면, 버스 예매 연습을 마치고 홈으로 돌아갑니다.</p>
 					</div>
 				</div>
-		</div>
-      </>
-    );
-  }
+			</div>
+		</>
+	);
+}
