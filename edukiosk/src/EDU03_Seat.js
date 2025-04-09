@@ -16,7 +16,7 @@ export default function Seat() {
         const all = [];
         for (let k = 0; k < 10; k++) {
             for (let i = 0; i < 4; i++) {
-                all.push(`${k + 1}-${i + 1} `);
+                all.push(`${k + 1}-${i + 1}`);
             }
         }
         return all
