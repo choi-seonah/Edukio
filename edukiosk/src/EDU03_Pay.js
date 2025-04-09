@@ -7,6 +7,7 @@ export default function BusPay() {
 	const navigate = useNavigate();
 	const count = location.state?.payCount || [];
 	const selectedBus = location.state?.selectedBus;
+	const selectedSeat = location.state?.selectedSeat;
 	const ticketPrice = 20000;
 	const [passengers, setPassengers] = useState({ 아동: 0, 청소년: 0, 성인: 0, 노인: 0 });
 	const add = (type) => {
@@ -58,6 +59,7 @@ export default function BusPay() {
 									<p>도착지: {selectedBus?.des}</p>
 									<p>출발일: {selectedBus?.date}</p>
 									<p>출발시간: {selectedBus?.time}</p>
+									<p>버스 좌석: {selectedSeat.join("/ ")}</p>
 								</dd>
 							</dl>
 							<dl>

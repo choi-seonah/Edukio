@@ -82,7 +82,7 @@ export default function Seat() {
 					<button className='submit-btn'
 					onClick={(e) => {
 						navigate("/busselect/busdes/buscheck/busseat/buspay"
-							, { state: { payCount: count , selectedBus: selectedBus} })
+							, { state: { payCount: count , selectedBus: selectedBus, selectedSeat:selectedSeat} })
 					}}>최종 결제 창으로 이동</button>
 				</div>
 
