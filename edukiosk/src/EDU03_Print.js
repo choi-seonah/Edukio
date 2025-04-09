@@ -8,13 +8,11 @@ export default function BookingPrint() {
 	const navigate = useNavigate();
 
 	const seats = [];
-
 	for (let row = 1; row <= 10; row++) {
 		for (let col = 1; col <= 4; col++) {
 			seats.push(`${row}-${col}`);
 		}
 	}
-
 	const randomIndex = Math.floor(Math.random() * seats.length);
 	const randomSeat = seats[randomIndex];
 
