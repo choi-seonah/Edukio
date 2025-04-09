@@ -1,5 +1,4 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import payImage from "./media/payment.jpg";
 import { useState } from "react";
 
 export default function BusPay() {
@@ -59,7 +58,7 @@ export default function BusPay() {
 									<p>도착지: {selectedBus?.des}</p>
 									<p>출발일: {selectedBus?.date}</p>
 									<p>출발시간: {selectedBus?.time}</p>
-									<p>버스 좌석: {selectedSeat.join("/ ")}</p>
+									<p>버스 좌석: {selectedSeat.sort().join("/ ")}</p>
 								</dd>
 							</dl>
 							<dl>
