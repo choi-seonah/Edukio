@@ -13,17 +13,3 @@
     background-color:rgb(201,201,201);
 }
 
-.item-count .decrease{
-    border: 1px solid #000;
-    border-radius: 5px;
-    width: 30px;
-    height: 30px;
-    margin-right: 1px;
-}
-.item-count .increase{
-    border: 1px solid #000;
-    border-radius: 5px;
-    width: 30px;
-    height: 30px;
-    margin-left: 1px;
-}
