@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 function Pizzapayment() {
     const navigate = useNavigate();
-    const [countsecond, setcountsecond]=useState(10);
+    const [countsecond, setcountsecond]=useState(7);
     useEffect(() => {
         const interval = setInterval(() => {
             setcountsecond((prev) => prev - 1);
@@ -12,7 +12,7 @@ function Pizzapayment() {
 
         const timeout = setTimeout(() => {
             window.location.href = "/";
-        }, 10000); // 10초 뒤 메인화면으로 이동
+        }, 7000); // 10초 뒤 메인화면으로 이동
     
         return () => {
             clearInterval(interval);
