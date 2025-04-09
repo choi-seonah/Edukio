@@ -4,7 +4,7 @@ import { useState } from "react";
 export default function BusPay() {
 	const location = useLocation();
 	const navigate = useNavigate();
-	const count = location.state?.payCount || [];
+	const count = location.state?.payCount || 0;
 	const selectedBus = location.state?.selectedBus;
 	const selectedSeat = location.state?.selectedSeat;
 	const ticketPrice = 20000;
@@ -75,9 +75,9 @@ export default function BusPay() {
 							<p className="help-title">도움말</p>
 
 							<div className="des-help">
-								연령대에 따른 추가적인 할인이 적용되기 때문에 입력하신 좌석과 일치하게 눌러주시면 됩니다.<br/><br/>
-								아동 2명에 성인 1명인 경우, 아동 버튼을 2번 누르고 성인 버튼을 1번 눌러주세요.<br/><br/>
-								잘못 누르셨다면, 결제하기 옆의 초기화 버튼을 누르고 다시 눌러주세요.<br/><br/>
+								연령대에 따른 추가적인 할인이 적용되기 때문에 입력하신 좌석과 일치하게 눌러주시면 됩니다.<br /><br />
+								아동 2명에 성인 1명인 경우, 아동 버튼을 2번 누르고 성인 버튼을 1번 눌러주세요.<br /><br />
+								잘못 누르셨다면, 결제하기 옆의 초기화 버튼을 누르고 다시 눌러주세요.<br /><br />
 								입력이 완료되면 결제하기 버튼을 눌러서 사진과 같이 카드를 넣어주시면 됩니다.
 							</div>
 						</div>
@@ -85,7 +85,7 @@ export default function BusPay() {
 					<div className='noti'>
 						- 버스 티켓의 기본 가격은 20,000원입니다.<br />
 						- 아동, 노인: 50% 할인<br />
-						- 청소년: 30% 할인	
+						- 청소년: 30% 할인
 					</div>
 				</div>
 
@@ -100,12 +100,20 @@ export default function BusPay() {
 							}
 						}}>초기화</button>
 						<button className="submit-btn" onClick={() => {
-							navigate("/pay");
+							const total = Object.values(passengers).reduce((a, b) => a + b, 0);
+
+							if (selectedSeat.length !== total) {
+								alert("좌석과 맞지않음")
+
+							} else {
+
+								navigate("/pay");
+							}
 						}}>결제하기</button>
 					</div>
 				</div>
 
-	
+
 			</div>
 		</>
 	);

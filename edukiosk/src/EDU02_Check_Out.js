@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { setTotalPrice, findCoupon, removeProduct } from "./EDU02_Cart_Slice";
 
@@ -14,7 +14,7 @@ export default function Checkout() {
 	const totalPrice = useSelector((state) => state.cart.totalPrice); // ✅ Redux 금액
 	const couponError = useSelector(state => state.cart.couponError);
 	const couponMessage = useSelector(state => state.cart.couponMessage);
-
+	const navigator = useNavigate();
 	const [showPopup, setShowPopup] = useState(false);
 	const [couponCode, setCouponCode] = useState("");
 
@@ -23,7 +23,6 @@ export default function Checkout() {
 		dispatch(setTotalPrice());
 	}, [cartList]);
 
-	// dispatch(findCoupon(""));
 
 	const handleApplyCoupon = () => {
 		dispatch(setTotalPrice());         // 최신 총합 계산
@@ -78,7 +77,14 @@ export default function Checkout() {
 
 				<div className='btn-wrap'>
 					<button className='submit-btn red-bdr' onClick={() => setShowPopup(true)}>쿠폰 사용</button>
-					<Link className='submit-btn' to="/pay">결제하기</Link>
+					<button className='submit-btn' onClick={(e)=>{
+						const result = cartList.some(item => item.amount >= 1)
+						if(!result){
+							alert("수량이 존재하지 않습니다.");
+						}else{
+							navigator("/pay");
+						}
+					}}>결제하기</button>
 				</div>
 			</div>
 
